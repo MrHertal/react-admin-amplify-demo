@@ -1,0 +1,59 @@
+type Order @model
+  @key(name: "byCustomerByStatusByDate", fields: ["customerID", "status", "date"])
+  @key(name: "byCustomerByDate", fields: ["customerID", "date"])
+  @key(name: "byRepresentativebyDate", fields: ["accountRepresentativeID", "date"])
+  @key(name: "byProduct", fields: ["productID", "id"])
+{
+  id: ID!
+  customerID: ID!
+  accountRepresentativeID: ID!
+  productID: ID!
+  status: String!
+  amount: Int!
+  date: String!
+}
+
+type Customer @model
+  @key(name: "byRepresentative", fields: ["accountRepresentativeID", "id"]) {
+  id: ID!
+  name: String!
+  phoneNumber: String
+  accountRepresentativeID: ID!
+  ordersByDate: [Order] @connection(keyName: "byCustomerByDate", fields: ["id"])
+  ordersByStatusDate: [Order] @connection(keyName: "byCustomerByStatusByDate", fields: ["id"])
+}
+
+type Employee @model
+  @key(name: "newHire", fields: ["newHire", "id"], queryField: "employeesNewHire")
+  @key(name: "newHireByStartDate", fields: ["newHire", "startDate"], queryField: "employeesNewHireByStartDate")
+  @key(name: "byName", fields: ["name", "id"], queryField: "employeeByName")
+  @key(name: "byTitle", fields: ["jobTitle", "id"], queryField: "employeesByJobTitle")
+  @key(name: "byWarehouse", fields: ["warehouseID", "id"]) {
+  id: ID!
+  name: String!
+  startDate: String!
+  phoneNumber: String!
+  warehouseID: ID!
+  jobTitle: String!
+  newHire: String! # We have to use String type, because Boolean types cannot be sort keys
+}
+
+type Warehouse @model {
+  id: ID!
+  employees: [Employee] @connection(keyName: "byWarehouse", fields: ["id"])
+}
+
+type AccountRepresentative @model
+  @key(name: "bySalesPeriodByOrderTotal", fields: ["salesPeriod", "orderTotal"], queryField: "repsByPeriodAndTotal") {
+  id: ID!
+  customers: [Customer] @connection(keyName: "byRepresentative", fields: ["id"])
+  orders: [Order] @connection(keyName: "byRepresentativebyDate", fields: ["id"])
+  orderTotal: Int
+  salesPeriod: String
+}
+
+type Product @model {
+  id: ID!
+  name: String!
+  orders: [Order] @connection(keyName: "byProduct", fields: ["id"])
+}
