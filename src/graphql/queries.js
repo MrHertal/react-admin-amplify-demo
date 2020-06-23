@@ -290,6 +290,137 @@ export const listProducts = /* GraphQL */ `
     }
   }
 `;
+export const ordersByCustomerByDate = /* GraphQL */ `
+  query OrdersByCustomerByDate(
+    $customerID: ID
+    $date: ModelStringKeyConditionInput
+    $sortDirection: ModelSortDirection
+    $filter: ModelOrderFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    ordersByCustomerByDate(
+      customerID: $customerID
+      date: $date
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        customerID
+        accountRepresentativeID
+        productID
+        status
+        amount
+        date
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const ordersByRepresentativeByDate = /* GraphQL */ `
+  query OrdersByRepresentativeByDate(
+    $accountRepresentativeID: ID
+    $date: ModelStringKeyConditionInput
+    $sortDirection: ModelSortDirection
+    $filter: ModelOrderFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    ordersByRepresentativeByDate(
+      accountRepresentativeID: $accountRepresentativeID
+      date: $date
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        customerID
+        accountRepresentativeID
+        productID
+        status
+        amount
+        date
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const ordersByProduct = /* GraphQL */ `
+  query OrdersByProduct(
+    $productID: ID
+    $id: ModelIDKeyConditionInput
+    $sortDirection: ModelSortDirection
+    $filter: ModelOrderFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    ordersByProduct(
+      productID: $productID
+      id: $id
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        customerID
+        accountRepresentativeID
+        productID
+        status
+        amount
+        date
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const customersByRepresentative = /* GraphQL */ `
+  query CustomersByRepresentative(
+    $accountRepresentativeID: ID
+    $id: ModelIDKeyConditionInput
+    $sortDirection: ModelSortDirection
+    $filter: ModelCustomerFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    customersByRepresentative(
+      accountRepresentativeID: $accountRepresentativeID
+      id: $id
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        name
+        phoneNumber
+        accountRepresentativeID
+        ordersByDate {
+          nextToken
+        }
+        ordersByStatusDate {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
 export const employeesNewHire = /* GraphQL */ `
   query EmployeesNewHire(
     $newHire: String
@@ -354,8 +485,8 @@ export const employeesNewHireByStartDate = /* GraphQL */ `
     }
   }
 `;
-export const employeeByName = /* GraphQL */ `
-  query EmployeeByName(
+export const employeesByName = /* GraphQL */ `
+  query EmployeesByName(
     $name: String
     $id: ModelIDKeyConditionInput
     $sortDirection: ModelSortDirection
@@ -363,7 +494,7 @@ export const employeeByName = /* GraphQL */ `
     $limit: Int
     $nextToken: String
   ) {
-    employeeByName(
+    employeesByName(
       name: $name
       id: $id
       sortDirection: $sortDirection
@@ -418,6 +549,38 @@ export const employeesByJobTitle = /* GraphQL */ `
     }
   }
 `;
+export const employeesByWarehouse = /* GraphQL */ `
+  query EmployeesByWarehouse(
+    $warehouseID: ID
+    $id: ModelIDKeyConditionInput
+    $sortDirection: ModelSortDirection
+    $filter: ModelEmployeeFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    employeesByWarehouse(
+      warehouseID: $warehouseID
+      id: $id
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        name
+        startDate
+        phoneNumber
+        warehouseID
+        jobTitle
+        newHire
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
 export const repsByPeriodAndTotal = /* GraphQL */ `
   query RepsByPeriodAndTotal(
     $salesPeriod: String
@@ -445,6 +608,36 @@ export const repsByPeriodAndTotal = /* GraphQL */ `
         }
         orderTotal
         salesPeriod
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const productsByName = /* GraphQL */ `
+  query ProductsByName(
+    $name: String
+    $id: ModelIDKeyConditionInput
+    $sortDirection: ModelSortDirection
+    $filter: ModelProductFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    productsByName(
+      name: $name
+      id: $id
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        name
+        orders {
+          nextToken
+        }
         createdAt
         updatedAt
       }
