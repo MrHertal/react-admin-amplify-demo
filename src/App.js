@@ -1,25 +1,20 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Resource } from "react-admin";
+import { AmplifyAdmin, configureAmplify } from "react-admin-amplify";
+import config from "./aws-exports";
+import * as mutations from "./graphql/mutations";
+import * as queries from "./graphql/queries";
+
+configureAmplify(config);
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AmplifyAdmin
+      operations={{ queries, mutations }}
+      options={{ adminGroups: ["admin", "editor"] }}
+    >
+      <Resource name="orders" />
+    </AmplifyAdmin>
   );
 }
 
