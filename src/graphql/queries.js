@@ -290,6 +290,38 @@ export const listProducts = /* GraphQL */ `
     }
   }
 `;
+export const ordersByCustomerByStatusByDate = /* GraphQL */ `
+  query OrdersByCustomerByStatusByDate(
+    $customerID: ID
+    $statusDate: ModelOrderByCustomerByStatusByDateCompositeKeyConditionInput
+    $sortDirection: ModelSortDirection
+    $filter: ModelOrderFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    ordersByCustomerByStatusByDate(
+      customerID: $customerID
+      statusDate: $statusDate
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        customerID
+        accountRepresentativeID
+        productID
+        status
+        amount
+        date
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
 export const ordersByCustomerByDate = /* GraphQL */ `
   query OrdersByCustomerByDate(
     $customerID: ID

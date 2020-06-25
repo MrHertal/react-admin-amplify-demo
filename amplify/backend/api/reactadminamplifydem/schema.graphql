@@ -1,5 +1,5 @@
 type Order @model
-  @key(name: "byCustomerByStatusByDate", fields: ["customerID", "status", "date"])
+  @key(name: "byCustomerByStatusByDate", fields: ["customerID", "status", "date"], queryField: "ordersByCustomerByStatusByDate")
   @key(name: "byCustomerByDate", fields: ["customerID", "date"], queryField: "ordersByCustomerByDate")
   @key(name: "byRepresentativebyDate", fields: ["accountRepresentativeID", "date"], queryField: "ordersByRepresentativeByDate")
   @key(name: "byProduct", fields: ["productID", "id"], queryField: "ordersByProduct")
