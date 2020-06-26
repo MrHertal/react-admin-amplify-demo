@@ -1,8 +1,8 @@
 type Order @model
-  @key(name: "byCustomerByStatusByDate", fields: ["customerID", "status", "date"])
-  @key(name: "byCustomerByDate", fields: ["customerID", "date"])
-  @key(name: "byRepresentativebyDate", fields: ["accountRepresentativeID", "date"])
-  @key(name: "byProduct", fields: ["productID", "id"])
+  @key(name: "byCustomerByStatusByDate", fields: ["customerID", "status", "date"], queryField: "ordersByCustomerByStatusByDate")
+  @key(name: "byCustomerByDate", fields: ["customerID", "date"], queryField: "ordersByCustomerByDate")
+  @key(name: "byRepresentativebyDate", fields: ["accountRepresentativeID", "date"], queryField: "ordersByRepresentativeByDate")
+  @key(name: "byProduct", fields: ["productID", "id"], queryField: "ordersByProduct")
 {
   id: ID!
   customerID: ID!
@@ -14,7 +14,7 @@ type Order @model
 }
 
 type Customer @model
-  @key(name: "byRepresentative", fields: ["accountRepresentativeID", "id"]) {
+  @key(name: "byRepresentative", fields: ["accountRepresentativeID", "id"], queryField: "customersByRepresentative") {
   id: ID!
   name: String!
   phoneNumber: String
@@ -26,9 +26,9 @@ type Customer @model
 type Employee @model
   @key(name: "newHire", fields: ["newHire", "id"], queryField: "employeesNewHire")
   @key(name: "newHireByStartDate", fields: ["newHire", "startDate"], queryField: "employeesNewHireByStartDate")
-  @key(name: "byName", fields: ["name", "id"], queryField: "employeeByName")
+  @key(name: "byName", fields: ["name", "id"], queryField: "employeesByName")
   @key(name: "byTitle", fields: ["jobTitle", "id"], queryField: "employeesByJobTitle")
-  @key(name: "byWarehouse", fields: ["warehouseID", "id"]) {
+  @key(name: "byWarehouse", fields: ["warehouseID", "id"], queryField: "employeesByWarehouse") {
   id: ID!
   name: String!
   startDate: String!
@@ -52,7 +52,8 @@ type AccountRepresentative @model
   salesPeriod: String
 }
 
-type Product @model {
+type Product @model
+  @key(name: "byName", fields: ["name", "id"], queryField: "productsByName") {
   id: ID!
   name: String!
   orders: [Order] @connection(keyName: "byProduct", fields: ["id"])
