@@ -4,7 +4,12 @@ import { Resource } from "react-admin";
 import { AmplifyAdmin } from "react-admin-amplify";
 import awsExports from "./aws-exports";
 import { Dashboard } from "./components/Dashboard";
-import { OrderList } from "./components/Order";
+import {
+  OrderCreate,
+  OrderEdit,
+  OrderList,
+  OrderShow,
+} from "./components/Order";
 import * as mutations from "./graphql/mutations";
 import * as queries from "./graphql/queries";
 
@@ -17,7 +22,13 @@ function App() {
       options={{ adminGroups: ["admin", "editor"] }}
       dashboard={Dashboard}
     >
-      <Resource name="orders" list={OrderList} />
+      <Resource
+        name="orders"
+        list={OrderList}
+        show={OrderShow}
+        edit={OrderEdit}
+        create={OrderCreate}
+      />
     </AmplifyAdmin>
   );
 }
