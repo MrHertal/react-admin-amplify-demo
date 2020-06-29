@@ -7,6 +7,7 @@ import {
   Edit,
   EditButton,
   List,
+  ReferenceField,
   required,
   SelectInput,
   Show,
@@ -54,7 +55,7 @@ export const EmployeeList = (props) => {
         <TextField source="name" sortable={false} />
         <DateField source="startDate" sortable={false} />
         <TextField source="phoneNumber" sortable={false} />
-        <TextField source="warehouseID" label="Warehouse" sortable={false} />
+        <TextField source="warehouseID" label="Warehouse id" sortable={false} />
         <TextField source="jobTitle" sortable={false} />
         <TextField source="newHire" sortable={false} />
         <DateField source="createdAt" sortable={false} />
@@ -73,7 +74,14 @@ export const EmployeeShow = (props) => (
       <TextField source="name" />
       <DateField source="startDate" />
       <TextField source="phoneNumber" />
-      <TextField source="warehouseID" label="Warehouse" />
+      <ReferenceField
+        source="warehouseID"
+        reference="warehouses"
+        label="Warehouse"
+        link="show"
+      >
+        <TextField source="id" />
+      </ReferenceField>
       <TextField source="jobTitle" />
       <TextField source="newHire" />
       <DateField source="createdAt" />
@@ -98,7 +106,7 @@ export const EmployeeEdit = (props) => (
       <TextInput source="phoneNumber" validate={validatePhoneNumber} />
       <TextInput
         source="warehouseID"
-        label="Warehouse"
+        label="Warehouse id"
         validate={validateWarehouse}
       />
       <TextInput source="jobTitle" validate={validateJobTitle} />
@@ -123,7 +131,7 @@ export const EmployeeCreate = (props) => (
       <TextInput source="phoneNumber" validate={validatePhoneNumber} />
       <TextInput
         source="warehouseID"
-        label="Warehouse"
+        label="Warehouse id"
         validate={validateWarehouse}
       />
       <TextInput source="jobTitle" validate={validateJobTitle} />

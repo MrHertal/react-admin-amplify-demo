@@ -7,6 +7,7 @@ import {
   EditButton,
   List,
   NumberField,
+  ReferenceField,
   ReferenceManyField,
   required,
   Show,
@@ -25,7 +26,7 @@ const CustomerFilter = (props) => (
   <AmplifyFilter {...props} defaultQuery={defaultQuery}>
     <TextInput
       source="customersByRepresentative.accountRepresentativeID"
-      label="Account representative"
+      label="Account representative id"
       alwaysOn
       resettable
     />
@@ -51,7 +52,7 @@ export const CustomerList = (props) => {
         <TextField source="phoneNumber" sortable={false} />
         <TextField
           source="accountRepresentativeID"
-          label="Account representative"
+          label="Account representative id"
           sortable={false}
         />
         <DateField source="createdAt" sortable={false} />
@@ -69,10 +70,14 @@ export const CustomerShow = (props) => (
       <TextField source="id" />
       <TextField source="name" />
       <TextField source="phoneNumber" />
-      <TextField
+      <ReferenceField
         source="accountRepresentativeID"
+        reference="accountRepresentatives"
         label="Account representative"
-      />
+        link="show"
+      >
+        <TextField source="id" />
+      </ReferenceField>
       <ReferenceManyField
         reference="orders"
         target="ordersByCustomerByDate.customerID"
@@ -82,13 +87,13 @@ export const CustomerShow = (props) => (
       >
         <Datagrid>
           <TextField source="id" sortable={false} />
-          <TextField source="customerID" label="Customer" sortable={false} />
+          <TextField source="customerID" label="Customer id" sortable={false} />
           <TextField
             source="accountRepresentativeID"
-            label="Account representative"
+            label="Account representative id"
             sortable={false}
           />
-          <TextField source="productID" label="Product" sortable={false} />
+          <TextField source="productID" label="Product id" sortable={false} />
           <TextField source="status" sortable={false} />
           <NumberField source="amount" sortable={false} />
           <DateField
@@ -125,7 +130,7 @@ export const CustomerEdit = (props) => (
       <TextInput source="phoneNumber" />
       <TextInput
         source="accountRepresentativeID"
-        label="Account representative"
+        label="Account representative id"
         validate={validateAccountRepresentative}
       />
     </SimpleForm>
@@ -140,7 +145,7 @@ export const CustomerCreate = (props) => (
       <TextInput source="phoneNumber" />
       <TextInput
         source="accountRepresentativeID"
-        label="Account representative"
+        label="Account representative id"
         validate={validateAccountRepresentative}
       />
     </SimpleForm>
