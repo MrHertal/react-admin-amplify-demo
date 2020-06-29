@@ -130,6 +130,7 @@ export const OrderEdit = (props) => (
 export const OrderCreate = (props) => (
   <Create {...props}>
     <SimpleForm>
+      <TextInput source="id" />
       <TextInput source="customerID" label="Customer" />
       <TextInput
         source="accountRepresentativeID"
