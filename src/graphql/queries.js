@@ -172,7 +172,11 @@ export const listWarehouses = /* GraphQL */ `
     listWarehouses(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        employees {
+        employees(limit: 10) {
+          items {
+            id
+            name
+          }
           nextToken
         }
         createdAt
