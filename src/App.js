@@ -48,7 +48,7 @@ function App() {
   return (
     <AmplifyAdmin
       operations={{ queries, mutations }}
-      options={{ adminGroups: ["admin", "editor"] }}
+      options={{ authGroups: ["admin"] }}
       dashboard={Dashboard}
     >
       <Resource

@@ -53,6 +53,8 @@ export const onCreateCustomer = /* GraphQL */ `
       name
       phoneNumber
       accountRepresentativeID
+      createdAt
+      updatedAt
       ordersByDate {
         items {
           id
@@ -81,8 +83,6 @@ export const onCreateCustomer = /* GraphQL */ `
         }
         nextToken
       }
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -93,6 +93,8 @@ export const onUpdateCustomer = /* GraphQL */ `
       name
       phoneNumber
       accountRepresentativeID
+      createdAt
+      updatedAt
       ordersByDate {
         items {
           id
@@ -121,8 +123,6 @@ export const onUpdateCustomer = /* GraphQL */ `
         }
         nextToken
       }
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -133,6 +133,8 @@ export const onDeleteCustomer = /* GraphQL */ `
       name
       phoneNumber
       accountRepresentativeID
+      createdAt
+      updatedAt
       ordersByDate {
         items {
           id
@@ -161,8 +163,6 @@ export const onDeleteCustomer = /* GraphQL */ `
         }
         nextToken
       }
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -215,6 +215,8 @@ export const onCreateWarehouse = /* GraphQL */ `
   subscription OnCreateWarehouse {
     onCreateWarehouse {
       id
+      createdAt
+      updatedAt
       employees {
         items {
           id
@@ -229,8 +231,6 @@ export const onCreateWarehouse = /* GraphQL */ `
         }
         nextToken
       }
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -238,6 +238,8 @@ export const onUpdateWarehouse = /* GraphQL */ `
   subscription OnUpdateWarehouse {
     onUpdateWarehouse {
       id
+      createdAt
+      updatedAt
       employees {
         items {
           id
@@ -252,8 +254,6 @@ export const onUpdateWarehouse = /* GraphQL */ `
         }
         nextToken
       }
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -261,6 +261,8 @@ export const onDeleteWarehouse = /* GraphQL */ `
   subscription OnDeleteWarehouse {
     onDeleteWarehouse {
       id
+      createdAt
+      updatedAt
       employees {
         items {
           id
@@ -275,8 +277,6 @@ export const onDeleteWarehouse = /* GraphQL */ `
         }
         nextToken
       }
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -284,17 +284,10 @@ export const onCreateAccountRepresentative = /* GraphQL */ `
   subscription OnCreateAccountRepresentative {
     onCreateAccountRepresentative {
       id
-      customers {
-        items {
-          id
-          name
-          phoneNumber
-          accountRepresentativeID
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
+      orderTotal
+      salesPeriod
+      createdAt
+      updatedAt
       orders {
         items {
           id
@@ -309,10 +302,17 @@ export const onCreateAccountRepresentative = /* GraphQL */ `
         }
         nextToken
       }
-      orderTotal
-      salesPeriod
-      createdAt
-      updatedAt
+      customers {
+        items {
+          id
+          name
+          phoneNumber
+          accountRepresentativeID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
     }
   }
 `;
@@ -320,17 +320,10 @@ export const onUpdateAccountRepresentative = /* GraphQL */ `
   subscription OnUpdateAccountRepresentative {
     onUpdateAccountRepresentative {
       id
-      customers {
-        items {
-          id
-          name
-          phoneNumber
-          accountRepresentativeID
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
+      orderTotal
+      salesPeriod
+      createdAt
+      updatedAt
       orders {
         items {
           id
@@ -345,10 +338,17 @@ export const onUpdateAccountRepresentative = /* GraphQL */ `
         }
         nextToken
       }
-      orderTotal
-      salesPeriod
-      createdAt
-      updatedAt
+      customers {
+        items {
+          id
+          name
+          phoneNumber
+          accountRepresentativeID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
     }
   }
 `;
@@ -356,17 +356,10 @@ export const onDeleteAccountRepresentative = /* GraphQL */ `
   subscription OnDeleteAccountRepresentative {
     onDeleteAccountRepresentative {
       id
-      customers {
-        items {
-          id
-          name
-          phoneNumber
-          accountRepresentativeID
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
+      orderTotal
+      salesPeriod
+      createdAt
+      updatedAt
       orders {
         items {
           id
@@ -381,10 +374,17 @@ export const onDeleteAccountRepresentative = /* GraphQL */ `
         }
         nextToken
       }
-      orderTotal
-      salesPeriod
-      createdAt
-      updatedAt
+      customers {
+        items {
+          id
+          name
+          phoneNumber
+          accountRepresentativeID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
     }
   }
 `;
@@ -393,6 +393,8 @@ export const onCreateProduct = /* GraphQL */ `
     onCreateProduct {
       id
       name
+      createdAt
+      updatedAt
       orders {
         items {
           id
@@ -407,8 +409,6 @@ export const onCreateProduct = /* GraphQL */ `
         }
         nextToken
       }
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -417,6 +417,8 @@ export const onUpdateProduct = /* GraphQL */ `
     onUpdateProduct {
       id
       name
+      createdAt
+      updatedAt
       orders {
         items {
           id
@@ -431,8 +433,6 @@ export const onUpdateProduct = /* GraphQL */ `
         }
         nextToken
       }
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -441,6 +441,8 @@ export const onDeleteProduct = /* GraphQL */ `
     onDeleteProduct {
       id
       name
+      createdAt
+      updatedAt
       orders {
         items {
           id
@@ -455,8 +457,6 @@ export const onDeleteProduct = /* GraphQL */ `
         }
         nextToken
       }
-      createdAt
-      updatedAt
     }
   }
 `;
