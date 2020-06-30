@@ -82,3 +82,14 @@ type Product
   name: String!
   orders: [Order] @connection(keyName: "byProduct", fields: ["id"])
 }
+
+type User
+  @model
+  @auth(rules: [
+    { allow: public, operations: [read] },
+    { allow: groups, groups: ["superadmin"] }
+  ]) {
+  id: ID!
+  username: String!
+  password: String!
+}

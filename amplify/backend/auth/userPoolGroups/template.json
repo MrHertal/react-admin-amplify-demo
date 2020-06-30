@@ -41,11 +41,65 @@
     },
     "Resources": {
     
+        "superadminGroup": {
+          "Type" : "AWS::Cognito::UserPoolGroup",
+          "Properties" : {
+              "GroupName" : "superadmin",
+              "Precedence" : 1,
+              
+              "RoleArn" : {
+                "Fn::GetAtt": [
+                    "superadminGroupRole",
+                    "Arn"
+                ]
+              },
+              
+              "UserPoolId" : {
+                "Ref": "authreactadminamplifydem9cde0abfUserPoolId"
+              } 
+            }
+        },
+        
+        "superadminGroupRole": {
+            "Type": "AWS::IAM::Role",
+            "Properties": {
+                "RoleName":{
+                    "Fn::Join": [
+                        "",
+                        [
+                          {
+                            "Ref": "authreactadminamplifydem9cde0abfUserPoolId"
+                          },
+                          "-superadminGroupRole"
+                        ]
+                    ]
+                },
+                "AssumeRolePolicyDocument": {
+                    "Version": "2012-10-17",
+                    "Statement": [
+                        {
+                            "Sid": "",
+                            "Effect": "Allow",
+                            "Principal": {
+                                "Federated": "cognito-identity.amazonaws.com"
+                            },
+                            "Action": "sts:AssumeRoleWithWebIdentity",
+                            "Condition": {
+                              "StringEquals": {"cognito-identity.amazonaws.com:aud": {"Ref":"authreactadminamplifydem9cde0abfIdentityPoolId"}},
+                              "ForAnyValue:StringLike": {"cognito-identity.amazonaws.com:amr": "authenticated"}
+                            }
+                        }
+                    ]
+                }
+            }
+        },
+     
+    
         "adminGroup": {
           "Type" : "AWS::Cognito::UserPoolGroup",
           "Properties" : {
               "GroupName" : "admin",
-              "Precedence" : 1,
+              "Precedence" : 2,
               
               "RoleArn" : {
                 "Fn::GetAtt": [
@@ -294,6 +348,17 @@
     },
     
     "Outputs": {
+      
+        "superadminGroupRole": {
+            "Value": {
+                "Fn::GetAtt": [
+                    "superadminGroupRole",
+                    "Arn"
+                ]
+            }
+         
+        },
+        
       
         "adminGroupRole": {
             "Value": {

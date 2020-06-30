@@ -34,6 +34,7 @@ import {
   ProductList,
   ProductShow,
 } from "./components/Product";
+import { UserCreate, UserEdit, UserList, UserShow } from "./components/User";
 import {
   WarehouseCreate,
   WarehouseList,
@@ -51,48 +52,59 @@ function App() {
       options={{ authGroups: ["admin"] }}
       dashboard={Dashboard}
     >
-      <Resource
-        name="orders"
-        list={OrderList}
-        show={OrderShow}
-        edit={OrderEdit}
-        create={OrderCreate}
-      />
-      <Resource
-        name="customers"
-        list={CustomerList}
-        show={CustomerShow}
-        edit={CustomerEdit}
-        create={CustomerCreate}
-      />
-      <Resource
-        name="employees"
-        list={EmployeeList}
-        show={EmployeeShow}
-        edit={EmployeeEdit}
-        create={EmployeeCreate}
-      />
-      <Resource
-        name="warehouses"
-        list={WarehouseList}
-        show={WarehouseShow}
-        create={WarehouseCreate}
-      />
-      <Resource
-        name="accountRepresentatives"
-        options={{ label: "Account Reps" }}
-        list={AccountRepresentativeList}
-        show={AccountRepresentativeShow}
-        edit={AccountRepresentativeEdit}
-        create={AccountRepresentativeCreate}
-      />
-      <Resource
-        name="products"
-        list={ProductList}
-        show={ProductShow}
-        edit={ProductEdit}
-        create={ProductCreate}
-      />
+      {(permissions) => [
+        <Resource
+          name="orders"
+          list={OrderList}
+          show={OrderShow}
+          edit={OrderEdit}
+          create={OrderCreate}
+        />,
+        <Resource
+          name="customers"
+          list={CustomerList}
+          show={CustomerShow}
+          edit={CustomerEdit}
+          create={CustomerCreate}
+        />,
+        <Resource
+          name="employees"
+          list={EmployeeList}
+          show={EmployeeShow}
+          edit={EmployeeEdit}
+          create={EmployeeCreate}
+        />,
+        <Resource
+          name="warehouses"
+          list={WarehouseList}
+          show={WarehouseShow}
+          create={WarehouseCreate}
+        />,
+        <Resource
+          name="accountRepresentatives"
+          options={{ label: "Account Reps" }}
+          list={AccountRepresentativeList}
+          show={AccountRepresentativeShow}
+          edit={AccountRepresentativeEdit}
+          create={AccountRepresentativeCreate}
+        />,
+        <Resource
+          name="products"
+          list={ProductList}
+          show={ProductShow}
+          edit={ProductEdit}
+          create={ProductCreate}
+        />,
+        permissions.includes("superadmin") ? (
+          <Resource
+            name="users"
+            list={UserList}
+            show={UserShow}
+            edit={UserEdit}
+            create={UserCreate}
+          />
+        ) : null,
+      ]}
     </AmplifyAdmin>
   );
 }
