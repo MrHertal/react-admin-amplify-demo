@@ -22,6 +22,7 @@ import {
   EmployeeList,
   EmployeeShow,
 } from "./components/Employee";
+import { LoginPage } from "./components/LoginPage";
 import {
   OrderCreate,
   OrderEdit,
@@ -50,6 +51,7 @@ function App() {
     <AmplifyAdmin
       operations={{ queries, mutations }}
       options={{ authGroups: ["admin"] }}
+      loginPage={LoginPage}
       dashboard={Dashboard}
     >
       {(permissions) => [
