@@ -21,7 +21,7 @@ import {
   TextInput,
 } from "react-admin";
 import { AmplifyFilter } from "react-admin-amplify";
-import { AmplifyPagination } from "./AmplifyPagination";
+import { Pagination } from "./Pagination";
 
 const defaultQuery = "listOrders";
 
@@ -66,7 +66,7 @@ export const OrderList = (props) => {
     <List
       {...props}
       filters={<OrderFilter setQuery={setQuery} />}
-      pagination={<AmplifyPagination />}
+      pagination={<Pagination />}
     >
       <Datagrid>
         <TextField

@@ -17,7 +17,7 @@ import {
   TextInput,
 } from "react-admin";
 import { AmplifyFilter } from "react-admin-amplify";
-import { AmplifyPagination } from "./AmplifyPagination";
+import { Pagination } from "./Pagination";
 
 const defaultQuery = "listProducts";
 
@@ -34,7 +34,7 @@ export const ProductList = (props) => {
     <List
       {...props}
       filters={<ProductFilter setQuery={setQuery} />}
-      pagination={<AmplifyPagination />}
+      pagination={<Pagination />}
     >
       <Datagrid>
         <TextField
@@ -62,7 +62,7 @@ export const ProductShow = (props) => (
         target="ordersByProduct.productID"
         label="Orders"
         perPage={10}
-        pagination={<AmplifyPagination />}
+        pagination={<Pagination />}
       >
         <Datagrid>
           <TextField source="id" sortBy="ordersByProduct" sortable={true} />

@@ -17,7 +17,7 @@ import {
   TextInput,
 } from "react-admin";
 import { AmplifyFilter } from "react-admin-amplify";
-import { AmplifyPagination } from "./AmplifyPagination";
+import { Pagination } from "./Pagination";
 
 const defaultQuery = "listAccountRepresentatives";
 
@@ -45,7 +45,7 @@ export const AccountRepresentativeList = (props) => {
       {...props}
       title="Account Representatives"
       filters={<AccountRepresentativeFilter setQuery={setQuery} />}
-      pagination={<AmplifyPagination />}
+      pagination={<Pagination />}
     >
       <Datagrid>
         <TextField source="id" sortable={false} />
@@ -78,7 +78,7 @@ export const AccountRepresentativeShow = (props) => (
         label="Customers"
         perPage={10}
         filter={{}}
-        pagination={<AmplifyPagination />}
+        pagination={<Pagination />}
       >
         <Datagrid>
           <TextField
@@ -105,7 +105,7 @@ export const AccountRepresentativeShow = (props) => (
         label="Orders"
         perPage={10}
         filter={{}}
-        pagination={<AmplifyPagination />}
+        pagination={<Pagination />}
       >
         <Datagrid>
           <TextField source="id" sortable={false} />

@@ -18,7 +18,7 @@ import {
   TextInput,
 } from "react-admin";
 import { AmplifyFilter } from "react-admin-amplify";
-import { AmplifyPagination } from "./AmplifyPagination";
+import { Pagination } from "./Pagination";
 
 const defaultQuery = "listEmployees";
 
@@ -44,7 +44,7 @@ export const EmployeeList = (props) => {
     <List
       {...props}
       filters={<EmployeeFilter setQuery={setQuery} />}
-      pagination={<AmplifyPagination />}
+      pagination={<Pagination />}
     >
       <Datagrid>
         <TextField

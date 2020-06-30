@@ -14,11 +14,11 @@ import {
   TextField,
   TextInput,
 } from "react-admin";
-import { AmplifyPagination } from "./AmplifyPagination";
+import { Pagination } from "./Pagination";
 
 export const UserList = (props) => {
   return (
-    <List {...props} pagination={<AmplifyPagination />}>
+    <List {...props} pagination={<Pagination />}>
       <Datagrid>
         <TextField source="id" sortable={false} />
         <TextField source="username" sortable={false} />
