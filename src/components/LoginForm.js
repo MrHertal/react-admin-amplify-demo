@@ -8,6 +8,7 @@ import PropTypes from "prop-types";
 import { useLogin, useNotify, useSafeSetState, useTranslate } from "ra-core";
 import React, { useEffect, useState } from "react";
 import { Field, Form } from "react-final-form";
+import ReCAPTCHA from "react-google-recaptcha";
 import { getUser } from "../graphql/queries";
 
 const useStyles = makeStyles(
@@ -48,6 +49,7 @@ export const LoginForm = (props) => {
 
   const [demoUsername, setDemoUsername] = useState("");
   const [demoPassword, setDemoPassword] = useState("");
+  const [recaptchaToken, setRecaptchaToken] = useState(null);
 
   useEffect(() => {
     async function getDemoUser() {
@@ -77,6 +79,14 @@ export const LoginForm = (props) => {
   };
 
   const submit = (values) => {
+    if (!recaptchaToken) {
+      return;
+    }
+
+    values["clientMetadata"] = {
+      recaptchaToken,
+    };
+
     setLoading(true);
     login(values, redirectTo)
       .then(() => {
@@ -93,6 +103,10 @@ export const LoginForm = (props) => {
           "warning"
         );
       });
+  };
+
+  const onRecaptchaChange = (responseToken) => {
+    setRecaptchaToken(responseToken);
   };
 
   return (
@@ -124,6 +138,12 @@ export const LoginForm = (props) => {
                 type="password"
                 disabled={loading}
                 autoComplete="current-password"
+              />
+            </div>
+            <div className={classes.input}>
+              <ReCAPTCHA
+                sitekey={process.env.REACT_APP_RECAPTCHA_SITE_KEY}
+                onChange={onRecaptchaChange}
               />
             </div>
           </div>
