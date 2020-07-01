@@ -39,10 +39,6 @@ const Input = ({ meta: { touched, error }, input: inputProps, ...props }) => (
   />
 );
 
-function onChange(value) {
-  console.log("Captcha value:", value);
-}
-
 export const LoginForm = (props) => {
   const { redirectTo } = props;
   const [loading, setLoading] = useSafeSetState(false);
@@ -53,6 +49,7 @@ export const LoginForm = (props) => {
 
   const [demoUsername, setDemoUsername] = useState("");
   const [demoPassword, setDemoPassword] = useState("");
+  const [recaptchaToken, setRecaptchaToken] = useState(null);
 
   useEffect(() => {
     async function getDemoUser() {
@@ -82,6 +79,14 @@ export const LoginForm = (props) => {
   };
 
   const submit = (values) => {
+    if (!recaptchaToken) {
+      return;
+    }
+
+    values["clientMetadata"] = {
+      recaptchaToken,
+    };
+
     setLoading(true);
     login(values, redirectTo)
       .then(() => {
@@ -98,6 +103,10 @@ export const LoginForm = (props) => {
           "warning"
         );
       });
+  };
+
+  const onRecaptchaChange = (responseToken) => {
+    setRecaptchaToken(responseToken);
   };
 
   return (
@@ -134,7 +143,7 @@ export const LoginForm = (props) => {
             <div className={classes.input}>
               <ReCAPTCHA
                 sitekey={process.env.REACT_APP_RECAPTCHA_SITE_KEY}
-                onChange={onChange}
+                onChange={onRecaptchaChange}
               />
             </div>
           </div>

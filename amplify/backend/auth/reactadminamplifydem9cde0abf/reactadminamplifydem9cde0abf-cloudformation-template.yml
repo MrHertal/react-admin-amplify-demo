@@ -9,6 +9,18 @@ Parameters:
     Type: String
   
   
+  
+  
+  functionreactadminamplifydem9cde0abfPreAuthenticationArn: 
+    Type: String
+    Default: functionreactadminamplifydem9cde0abfPreAuthenticationArn
+  
+  functionreactadminamplifydem9cde0abfPreAuthenticationName: 
+    Type: String
+    Default: functionreactadminamplifydem9cde0abfPreAuthenticationName
+  
+  
+  
 
     
   identityPoolName:
@@ -88,8 +100,29 @@ Parameters:
                       
   userPoolGroupList:
     Type: CommaDelimitedList
-                          
+              
   dependsOn:
+    Type: CommaDelimitedList
+        
+  thirdPartyAuth:
+    Type: String
+              
+  userPoolGroups:
+    Type: String
+              
+  adminQueries:
+    Type: String
+            
+  triggers:
+    Type: String
+                
+  hostedUI:
+    Type: String
+                              
+  parentStack:
+    Type: String
+                
+  permissions:
     Type: CommaDelimitedList
     
 Conditions:
@@ -145,6 +178,19 @@ Resources:
         
       
       
+      LambdaConfig:
+        
+        
+        
+        
+        
+        
+          PreAuthentication: !Ref functionreactadminamplifydem9cde0abfPreAuthenticationArn
+        
+        
+        
+        
+      
       
       AutoVerifiedAttributes: !Ref autoVerifiedAttributes
       
@@ -166,6 +212,27 @@ Resources:
         SnsCallerArn: !GetAtt SNSRole.Arn
         ExternalId: reacta9cde0abf_role_external_id
     
+  
+    
+    
+  
+    
+    
+  
+  UserPoolPreAuthenticationLambdaInvokePermission: 
+    Type: "AWS::Lambda::Permission"
+    DependsOn: UserPool
+    Properties: 
+      Action: "lambda:invokeFunction"
+      Principal: "cognito-idp.amazonaws.com"
+      FunctionName: !Ref functionreactadminamplifydem9cde0abfPreAuthenticationName
+      SourceArn: !GetAtt UserPool.Arn
+  
+  
+   
+    
+  # Updating lambda role with permissions to Cognito
+  
   
   UserPoolClientWeb:
   # Created provide application access to user pool
