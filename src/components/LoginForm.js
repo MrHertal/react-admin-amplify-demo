@@ -8,6 +8,7 @@ import PropTypes from "prop-types";
 import { useLogin, useNotify, useSafeSetState, useTranslate } from "ra-core";
 import React, { useEffect, useState } from "react";
 import { Field, Form } from "react-final-form";
+import ReCAPTCHA from "react-google-recaptcha";
 import { getUser } from "../graphql/queries";
 
 const useStyles = makeStyles(
@@ -37,6 +38,10 @@ const Input = ({ meta: { touched, error }, input: inputProps, ...props }) => (
     fullWidth
   />
 );
+
+function onChange(value) {
+  console.log("Captcha value:", value);
+}
 
 export const LoginForm = (props) => {
   const { redirectTo } = props;
@@ -124,6 +129,12 @@ export const LoginForm = (props) => {
                 type="password"
                 disabled={loading}
                 autoComplete="current-password"
+              />
+            </div>
+            <div className={classes.input}>
+              <ReCAPTCHA
+                sitekey={process.env.REACT_APP_RECAPTCHA_SITE_KEY}
+                onChange={onChange}
               />
             </div>
           </div>
