@@ -25,12 +25,30 @@ const defaultQuery = "listEmployees";
 const EmployeeFilter = (props) => (
   <AmplifyFilter {...props} defaultQuery={defaultQuery}>
     <SelectInput
-      source="employeesNewHire.newHire"
+      source="employeesNewHireByStartDate.newHire"
       label="New hire"
       choices={[
         { id: "false", name: "false" },
         { id: "true", name: "true" },
       ]}
+      alwaysOn
+      resettable
+    />
+    <DateInput
+      source="employeesNewHireByStartDate.startDate.eq"
+      label="Start date"
+      alwaysOn
+    />
+    <TextInput source="employeesByName.name" label="Name" alwaysOn resettable />
+    <TextInput
+      source="employeesByJobTitle.jobTitle"
+      label="Job title"
+      alwaysOn
+      resettable
+    />
+    <TextInput
+      source="employeesByWarehouse.warehouseID"
+      label="Warehouse id"
       alwaysOn
       resettable
     />
@@ -50,14 +68,26 @@ export const EmployeeList = (props) => {
         <TextField
           source="id"
           sortBy={query}
-          sortable={query === "employeesNewHire"}
+          sortable={[
+            "employeesByName",
+            "employeesByJobTitle",
+            "employeesByWarehouse",
+          ].includes(query)}
         />
         <TextField source="name" sortable={false} />
-        <DateField source="startDate" sortable={false} />
+        <DateField
+          source="startDate"
+          sortBy={query}
+          sortable={query === "employeesNewHireByStartDate"}
+        />
         <TextField source="phoneNumber" sortable={false} />
         <TextField source="warehouseID" label="Warehouse id" sortable={false} />
         <TextField source="jobTitle" sortable={false} />
-        <TextField source="newHire" sortable={false} />
+        <TextField
+          source="newHire"
+          sortBy={query}
+          sortable={query === "employeesNewHireByStartDate"}
+        />
         <DateField source="createdAt" sortable={false} />
         <DateField source="updatedAt" sortable={false} />
         <ShowButton />
