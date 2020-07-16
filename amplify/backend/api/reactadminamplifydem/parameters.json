@@ -7,5 +7,6 @@
             "authreactadminamplifydem9cde0abf",
             "Outputs.UserPoolId"
         ]
-    }
+    },
+    "APIKeyExpirationEpoch": 1626425747
 }
