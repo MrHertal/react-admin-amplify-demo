@@ -13,7 +13,8 @@
         },
         "categories": {
             "auth": {
-                "reactadminamplifydem9cde0abf": {}
+                "reactadminamplifydem9cde0abf": {},
+                "userPoolGroups": {}
             },
             "hosting": {
                 "amplifyhosting": {
