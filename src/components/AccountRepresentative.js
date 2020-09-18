@@ -81,11 +81,7 @@ export const AccountRepresentativeShow = (props) => (
         pagination={<Pagination />}
       >
         <Datagrid>
-          <TextField
-            source="id"
-            sortBy="customersByRepresentative"
-            sortable={true}
-          />
+          <TextField source="id" sortable={false} />
           <TextField source="name" sortable={false} />
           <TextField source="phoneNumber" sortable={false} />
           <TextField
@@ -118,11 +114,7 @@ export const AccountRepresentativeShow = (props) => (
           <TextField source="productID" label="Product" sortable={false} />
           <TextField source="status" sortable={false} />
           <NumberField source="amount" sortable={false} />
-          <DateField
-            source="date"
-            sortBy="ordersByRepresentativeByDate"
-            sortable={true}
-          />
+          <DateField source="date" sortable={false} />
           <DateField source="createdAt" sortable={false} />
           <DateField source="updatedAt" sortable={false} />
           <ShowButton />

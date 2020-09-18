@@ -65,7 +65,7 @@ export const ProductShow = (props) => (
         pagination={<Pagination />}
       >
         <Datagrid>
-          <TextField source="id" sortBy="ordersByProduct" sortable={true} />
+          <TextField source="id" sortable={false} />
           <TextField source="customerID" label="Customer" sortable={false} />
           <TextField
             source="accountRepresentativeID"

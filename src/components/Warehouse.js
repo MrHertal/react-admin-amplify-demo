@@ -48,11 +48,7 @@ export const WarehouseShow = (props) => (
         pagination={<Pagination />}
       >
         <Datagrid>
-          <TextField
-            source="id"
-            sortBy="employeesByWarehouse"
-            sortable={true}
-          />
+          <TextField source="id" sortable={false} />
           <TextField source="name" sortable={false} />
           <DateField source="startDate" sortable={false} />
           <TextField source="phoneNumber" sortable={false} />
