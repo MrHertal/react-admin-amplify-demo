@@ -1,6 +1,6 @@
 {
     "identityPoolName": "reactadminamplifydem9cde0abf_identitypool_9cde0abf",
-    "allowUnauthenticatedIdentities": false,
+    "allowUnauthenticatedIdentities": true,
     "resourceNameTruncated": "reacta9cde0abf",
     "userPoolName": "reactadminamplifydem9cde0abf_userpool_9cde0abf",
     "autoVerifiedAttributes": [
@@ -64,10 +64,11 @@
     "thirdPartyAuth": false,
     "userPoolGroups": false,
     "adminQueries": false,
-    "triggers": "{\"PreAuthentication\":[\"custom\"]}",
+    "triggers": "{\n  \"PreAuthentication\": [\n    \"custom\"\n  ]\n}",
     "hostedUI": false,
     "parentStack": {
         "Ref": "AWS::StackId"
     },
-    "permissions": []
+    "permissions": [],
+    "serviceName": "Cognito"
 }

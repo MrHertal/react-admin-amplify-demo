@@ -65,8 +65,6 @@ export const createCustomer = /* GraphQL */ `
       name
       phoneNumber
       accountRepresentativeID
-      createdAt
-      updatedAt
       ordersByDate {
         items {
           id
@@ -95,6 +93,8 @@ export const createCustomer = /* GraphQL */ `
         }
         nextToken
       }
+      createdAt
+      updatedAt
     }
   }
 `;
@@ -108,8 +108,6 @@ export const updateCustomer = /* GraphQL */ `
       name
       phoneNumber
       accountRepresentativeID
-      createdAt
-      updatedAt
       ordersByDate {
         items {
           id
@@ -138,6 +136,8 @@ export const updateCustomer = /* GraphQL */ `
         }
         nextToken
       }
+      createdAt
+      updatedAt
     }
   }
 `;
@@ -151,8 +151,6 @@ export const deleteCustomer = /* GraphQL */ `
       name
       phoneNumber
       accountRepresentativeID
-      createdAt
-      updatedAt
       ordersByDate {
         items {
           id
@@ -181,6 +179,8 @@ export const deleteCustomer = /* GraphQL */ `
         }
         nextToken
       }
+      createdAt
+      updatedAt
     }
   }
 `;
@@ -245,8 +245,6 @@ export const createWarehouse = /* GraphQL */ `
   ) {
     createWarehouse(input: $input, condition: $condition) {
       id
-      createdAt
-      updatedAt
       employees {
         items {
           id
@@ -261,6 +259,8 @@ export const createWarehouse = /* GraphQL */ `
         }
         nextToken
       }
+      createdAt
+      updatedAt
     }
   }
 `;
@@ -271,8 +271,6 @@ export const updateWarehouse = /* GraphQL */ `
   ) {
     updateWarehouse(input: $input, condition: $condition) {
       id
-      createdAt
-      updatedAt
       employees {
         items {
           id
@@ -287,6 +285,8 @@ export const updateWarehouse = /* GraphQL */ `
         }
         nextToken
       }
+      createdAt
+      updatedAt
     }
   }
 `;
@@ -297,8 +297,6 @@ export const deleteWarehouse = /* GraphQL */ `
   ) {
     deleteWarehouse(input: $input, condition: $condition) {
       id
-      createdAt
-      updatedAt
       employees {
         items {
           id
@@ -313,6 +311,8 @@ export const deleteWarehouse = /* GraphQL */ `
         }
         nextToken
       }
+      createdAt
+      updatedAt
     }
   }
 `;
@@ -323,10 +323,17 @@ export const createAccountRepresentative = /* GraphQL */ `
   ) {
     createAccountRepresentative(input: $input, condition: $condition) {
       id
-      orderTotal
-      salesPeriod
-      createdAt
-      updatedAt
+      customers {
+        items {
+          id
+          name
+          phoneNumber
+          accountRepresentativeID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
       orders {
         items {
           id
@@ -341,17 +348,10 @@ export const createAccountRepresentative = /* GraphQL */ `
         }
         nextToken
       }
-      customers {
-        items {
-          id
-          name
-          phoneNumber
-          accountRepresentativeID
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
+      orderTotal
+      salesPeriod
+      createdAt
+      updatedAt
     }
   }
 `;
@@ -362,10 +362,17 @@ export const updateAccountRepresentative = /* GraphQL */ `
   ) {
     updateAccountRepresentative(input: $input, condition: $condition) {
       id
-      orderTotal
-      salesPeriod
-      createdAt
-      updatedAt
+      customers {
+        items {
+          id
+          name
+          phoneNumber
+          accountRepresentativeID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
       orders {
         items {
           id
@@ -380,17 +387,10 @@ export const updateAccountRepresentative = /* GraphQL */ `
         }
         nextToken
       }
-      customers {
-        items {
-          id
-          name
-          phoneNumber
-          accountRepresentativeID
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
+      orderTotal
+      salesPeriod
+      createdAt
+      updatedAt
     }
   }
 `;
@@ -401,10 +401,17 @@ export const deleteAccountRepresentative = /* GraphQL */ `
   ) {
     deleteAccountRepresentative(input: $input, condition: $condition) {
       id
-      orderTotal
-      salesPeriod
-      createdAt
-      updatedAt
+      customers {
+        items {
+          id
+          name
+          phoneNumber
+          accountRepresentativeID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
       orders {
         items {
           id
@@ -419,17 +426,10 @@ export const deleteAccountRepresentative = /* GraphQL */ `
         }
         nextToken
       }
-      customers {
-        items {
-          id
-          name
-          phoneNumber
-          accountRepresentativeID
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
+      orderTotal
+      salesPeriod
+      createdAt
+      updatedAt
     }
   }
 `;
@@ -441,8 +441,6 @@ export const createProduct = /* GraphQL */ `
     createProduct(input: $input, condition: $condition) {
       id
       name
-      createdAt
-      updatedAt
       orders {
         items {
           id
@@ -457,6 +455,8 @@ export const createProduct = /* GraphQL */ `
         }
         nextToken
       }
+      createdAt
+      updatedAt
     }
   }
 `;
@@ -468,8 +468,6 @@ export const updateProduct = /* GraphQL */ `
     updateProduct(input: $input, condition: $condition) {
       id
       name
-      createdAt
-      updatedAt
       orders {
         items {
           id
@@ -484,6 +482,8 @@ export const updateProduct = /* GraphQL */ `
         }
         nextToken
       }
+      createdAt
+      updatedAt
     }
   }
 `;
@@ -495,8 +495,6 @@ export const deleteProduct = /* GraphQL */ `
     deleteProduct(input: $input, condition: $condition) {
       id
       name
-      createdAt
-      updatedAt
       orders {
         items {
           id
@@ -511,6 +509,8 @@ export const deleteProduct = /* GraphQL */ `
         }
         nextToken
       }
+      createdAt
+      updatedAt
     }
   }
 `;

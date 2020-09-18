@@ -1,4 +1,4 @@
-import { API, graphqlOperation } from "@aws-amplify/api";
+import { API } from "@aws-amplify/api";
 import Button from "@material-ui/core/Button";
 import CardActions from "@material-ui/core/CardActions";
 import CircularProgress from "@material-ui/core/CircularProgress";
@@ -53,9 +53,11 @@ export const LoginForm = (props) => {
 
   useEffect(() => {
     async function getDemoUser() {
-      const userData = await API.graphql(
-        graphqlOperation(getUser, { id: "demo" })
-      );
+      const userData = await API.graphql({
+        query: getUser,
+        variables: { id: "demo" },
+        authMode: "AWS_IAM",
+      });
 
       const user = userData.data.getUser;
 
