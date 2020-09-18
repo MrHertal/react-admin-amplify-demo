@@ -86,7 +86,7 @@ type Product
 type User
   @model
   @auth(rules: [
-    { allow: public, operations: [read] },
+    { allow: public, operations: [read], provider: iam },
     { allow: groups, groups: ["superadmin"] }
   ]) {
   id: ID!

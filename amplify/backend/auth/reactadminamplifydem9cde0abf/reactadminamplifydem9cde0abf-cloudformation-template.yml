@@ -118,13 +118,16 @@ Parameters:
                 
   hostedUI:
     Type: String
-                              
+                  
   parentStack:
     Type: String
                 
   permissions:
     Type: CommaDelimitedList
-    
+                  
+  serviceName:
+    Type: String
+            
 Conditions:
   ShouldNotCreateEnvResources: !Equals [ !Ref env, NONE ]
 

@@ -38,6 +38,262 @@ export const listOrders = /* GraphQL */ `
     }
   }
 `;
+export const getCustomer = /* GraphQL */ `
+  query GetCustomer($id: ID!) {
+    getCustomer(id: $id) {
+      id
+      name
+      phoneNumber
+      accountRepresentativeID
+      ordersByDate {
+        items {
+          id
+          customerID
+          accountRepresentativeID
+          productID
+          status
+          amount
+          date
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      ordersByStatusDate {
+        items {
+          id
+          customerID
+          accountRepresentativeID
+          productID
+          status
+          amount
+          date
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listCustomers = /* GraphQL */ `
+  query ListCustomers(
+    $filter: ModelCustomerFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listCustomers(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        name
+        phoneNumber
+        accountRepresentativeID
+        ordersByDate {
+          nextToken
+        }
+        ordersByStatusDate {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const getEmployee = /* GraphQL */ `
+  query GetEmployee($id: ID!) {
+    getEmployee(id: $id) {
+      id
+      name
+      startDate
+      phoneNumber
+      warehouseID
+      jobTitle
+      newHire
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listEmployees = /* GraphQL */ `
+  query ListEmployees(
+    $filter: ModelEmployeeFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listEmployees(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        name
+        startDate
+        phoneNumber
+        warehouseID
+        jobTitle
+        newHire
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const getWarehouse = /* GraphQL */ `
+  query GetWarehouse($id: ID!) {
+    getWarehouse(id: $id) {
+      id
+      employees {
+        items {
+          id
+          name
+          startDate
+          phoneNumber
+          warehouseID
+          jobTitle
+          newHire
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listWarehouses = /* GraphQL */ `
+  query ListWarehouses(
+    $filter: ModelWarehouseFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listWarehouses(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        employees(limit: 10) {
+          items {
+            id
+            name
+          }
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const getAccountRepresentative = /* GraphQL */ `
+  query GetAccountRepresentative($id: ID!) {
+    getAccountRepresentative(id: $id) {
+      id
+      customers {
+        items {
+          id
+          name
+          phoneNumber
+          accountRepresentativeID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      orders {
+        items {
+          id
+          customerID
+          accountRepresentativeID
+          productID
+          status
+          amount
+          date
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      orderTotal
+      salesPeriod
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listAccountRepresentatives = /* GraphQL */ `
+  query ListAccountRepresentatives(
+    $filter: ModelAccountRepresentativeFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listAccountRepresentatives(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        customers {
+          nextToken
+        }
+        orders {
+          nextToken
+        }
+        orderTotal
+        salesPeriod
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const getProduct = /* GraphQL */ `
+  query GetProduct($id: ID!) {
+    getProduct(id: $id) {
+      id
+      name
+      orders {
+        items {
+          id
+          customerID
+          accountRepresentativeID
+          productID
+          status
+          amount
+          date
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listProducts = /* GraphQL */ `
+  query ListProducts(
+    $filter: ModelProductFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listProducts(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        name
+        orders {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
 export const ordersByCustomerByStatusByDate = /* GraphQL */ `
   query OrdersByCustomerByStatusByDate(
     $customerID: ID
@@ -166,71 +422,6 @@ export const ordersByProduct = /* GraphQL */ `
     }
   }
 `;
-export const getCustomer = /* GraphQL */ `
-  query GetCustomer($id: ID!) {
-    getCustomer(id: $id) {
-      id
-      name
-      phoneNumber
-      accountRepresentativeID
-      createdAt
-      updatedAt
-      ordersByDate {
-        items {
-          id
-          customerID
-          accountRepresentativeID
-          productID
-          status
-          amount
-          date
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
-      ordersByStatusDate {
-        items {
-          id
-          customerID
-          accountRepresentativeID
-          productID
-          status
-          amount
-          date
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
-    }
-  }
-`;
-export const listCustomers = /* GraphQL */ `
-  query ListCustomers(
-    $filter: ModelCustomerFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listCustomers(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
-        name
-        phoneNumber
-        accountRepresentativeID
-        createdAt
-        updatedAt
-        ordersByDate {
-          nextToken
-        }
-        ordersByStatusDate {
-          nextToken
-        }
-      }
-      nextToken
-    }
-  }
-`;
 export const customersByRepresentative = /* GraphQL */ `
   query CustomersByRepresentative(
     $accountRepresentativeID: ID
@@ -253,49 +444,12 @@ export const customersByRepresentative = /* GraphQL */ `
         name
         phoneNumber
         accountRepresentativeID
-        createdAt
-        updatedAt
         ordersByDate {
           nextToken
         }
         ordersByStatusDate {
           nextToken
         }
-      }
-      nextToken
-    }
-  }
-`;
-export const getEmployee = /* GraphQL */ `
-  query GetEmployee($id: ID!) {
-    getEmployee(id: $id) {
-      id
-      name
-      startDate
-      phoneNumber
-      warehouseID
-      jobTitle
-      newHire
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const listEmployees = /* GraphQL */ `
-  query ListEmployees(
-    $filter: ModelEmployeeFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listEmployees(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
-        name
-        startDate
-        phoneNumber
-        warehouseID
-        jobTitle
-        newHire
         createdAt
         updatedAt
       }
@@ -463,116 +617,6 @@ export const employeesByWarehouse = /* GraphQL */ `
     }
   }
 `;
-export const getWarehouse = /* GraphQL */ `
-  query GetWarehouse($id: ID!) {
-    getWarehouse(id: $id) {
-      id
-      createdAt
-      updatedAt
-      employees {
-        items {
-          id
-          name
-          startDate
-          phoneNumber
-          warehouseID
-          jobTitle
-          newHire
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
-    }
-  }
-`;
-export const listWarehouses = /* GraphQL */ `
-  query ListWarehouses(
-    $filter: ModelWarehouseFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listWarehouses(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
-        createdAt
-        updatedAt
-        employees(limit: 10) {
-          items {
-            id
-            name
-          }
-          nextToken
-        }
-      }
-      nextToken
-    }
-  }
-`;
-export const getAccountRepresentative = /* GraphQL */ `
-  query GetAccountRepresentative($id: ID!) {
-    getAccountRepresentative(id: $id) {
-      id
-      orderTotal
-      salesPeriod
-      createdAt
-      updatedAt
-      orders {
-        items {
-          id
-          customerID
-          accountRepresentativeID
-          productID
-          status
-          amount
-          date
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
-      customers {
-        items {
-          id
-          name
-          phoneNumber
-          accountRepresentativeID
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
-    }
-  }
-`;
-export const listAccountRepresentatives = /* GraphQL */ `
-  query ListAccountRepresentatives(
-    $filter: ModelAccountRepresentativeFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listAccountRepresentatives(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-    ) {
-      items {
-        id
-        orderTotal
-        salesPeriod
-        createdAt
-        updatedAt
-        orders {
-          nextToken
-        }
-        customers {
-          nextToken
-        }
-      }
-      nextToken
-    }
-  }
-`;
 export const repsByPeriodAndTotal = /* GraphQL */ `
   query RepsByPeriodAndTotal(
     $salesPeriod: String
@@ -592,60 +636,16 @@ export const repsByPeriodAndTotal = /* GraphQL */ `
     ) {
       items {
         id
+        customers {
+          nextToken
+        }
+        orders {
+          nextToken
+        }
         orderTotal
         salesPeriod
         createdAt
         updatedAt
-        orders {
-          nextToken
-        }
-        customers {
-          nextToken
-        }
-      }
-      nextToken
-    }
-  }
-`;
-export const getProduct = /* GraphQL */ `
-  query GetProduct($id: ID!) {
-    getProduct(id: $id) {
-      id
-      name
-      createdAt
-      updatedAt
-      orders {
-        items {
-          id
-          customerID
-          accountRepresentativeID
-          productID
-          status
-          amount
-          date
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
-    }
-  }
-`;
-export const listProducts = /* GraphQL */ `
-  query ListProducts(
-    $filter: ModelProductFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listProducts(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
-        name
-        createdAt
-        updatedAt
-        orders {
-          nextToken
-        }
       }
       nextToken
     }
@@ -671,11 +671,11 @@ export const productsByName = /* GraphQL */ `
       items {
         id
         name
-        createdAt
-        updatedAt
         orders {
           nextToken
         }
+        createdAt
+        updatedAt
       }
       nextToken
     }

@@ -96,11 +96,7 @@ export const CustomerShow = (props) => (
           <TextField source="productID" label="Product id" sortable={false} />
           <TextField source="status" sortable={false} />
           <NumberField source="amount" sortable={false} />
-          <DateField
-            source="date"
-            sortBy="ordersByCustomerByDate"
-            sortable={true}
-          />
+          <DateField source="date" sortable={false} />
           <DateField source="createdAt" sortable={false} />
           <DateField source="updatedAt" sortable={false} />
           <ShowButton />

@@ -16,6 +16,99 @@ It includes the data and auth providers, but also some components that make thin
 
 The schema used in this demo is a variant of the [schema with 17 patterns related to relational designs](https://docs.amplify.aws/cli/graphql-transformer/dataaccess).
 
+## How to clone this project
+
+If you want to use this project as a bootstrap. Follow these steps:
+
+```sh
+git clone https://github.com/MrHertal/react-admin-amplify-demo.git && cd react-admin-amplify-demo
+```
+
+Install dependencies:
+
+```sh
+yarn
+```
+
+Init Amplify project:
+
+```sh
+amplify init
+```
+
+Push project to the cloud:
+
+```sh
+amplify push
+```
+
+Do not use the custom login page:
+
+```jsx
+// in App.js
+
+function App() {
+  return (
+    <AmplifyAdmin
+      operations={{ queries, mutations }}
+      options={{ authGroups: ["admin"] }}
+      // loginPage={LoginPage} Remove this line to set back the default login page
+      dashboard={Dashboard}
+    >
+    </AmplifyAdmin>
+  );
+}
+```
+
+This will remove the reCaptcha. You need then to remove the pre auth trigger:
+
+```sh
+amplify update auth
+Please note that certain attributes may not be overwritten if you choose to use defaults settings.
+
+You have configured resources that might depend on this Cognito resource.  Updating this Cognito resource could have unintended side effects.
+
+Using service: Cognito, provided by: awscloudformation
+ What do you want to do? Walkthrough all the auth configurations
+ Select the authentication/authorization services that you want to use: User Sign-Up, Sign-In, connected with AWS IAM controls (Enables per-user Storage features for images or other c
+ontent, Analytics, and more)
+ Allow unauthenticated logins? (Provides scoped down permissions that you can control via AWS IAM) Yes
+ Do you want to enable 3rd party authentication providers in your identity pool? No
+ Do you want to add User Pool Groups? No
+ Do you want to add an admin queries API? No
+ Multifactor authentication (MFA) user login options: OFF
+ Email based user registration/forgot password: Enabled (Requires per-user email entry at registration)
+ Please specify an email verification subject: Your verification code
+ Please specify an email verification message: Your verification code is {####}
+ Do you want to override the default password policy for this User Pool? No
+ Specify the app's refresh token expiration period (in days): 30
+ Do you want to specify the user attributes this app can read and write? No
+ Do you want to enable any of the following capabilities?
+ Do you want to use an OAuth flow? No
+? Do you want to configure Lambda Triggers for Cognito? Yes
+? Which triggers do you want to enable for Cognito
+Removing resource reactadminamplifydem9cde0abfPreAuthentication...
+Successfully removed resource
+```
+
+Push modifications:
+
+```sh
+amplify push
+```
+
+Create a user using the cognito console for example. If you want to change the status `FORCE_CHANGE_PASSWORD` of your newly created user, use the AWS cli as explained [here](https://stackoverflow.com/a/56948249/4140356).
+
+Finally, add the user to the `admin` group.
+
+Start the project:
+
+```sh
+yarn start
+```
+
+You should be able to login with your user.
+
 ## Learn More
 
 See [react-admin](https://marmelab.com/react-admin/Readme.html) and [Amplify](https://docs.amplify.aws).
