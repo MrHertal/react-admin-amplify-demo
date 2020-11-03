@@ -1,0 +1,28 @@
+{
+    "bucketName": "reactadminamplifydem71c8a54b6cb8437f932649ce964",
+    "authPolicyName": "s3_amplify_87edb1da",
+    "unauthPolicyName": "s3_amplify_87edb1da",
+    "authRoleName": {
+        "Ref": "AuthRoleName"
+    },
+    "unauthRoleName": {
+        "Ref": "UnauthRoleName"
+    },
+    "selectedGuestPermissions": [
+        "s3:GetObject",
+        "s3:ListBucket"
+    ],
+    "selectedAuthenticatedPermissions": [
+        "s3:GetObject",
+        "s3:ListBucket"
+    ],
+    "s3PermissionsGuestPublic": "DISALLOW",
+    "s3PermissionsGuestUploads": "DISALLOW",
+    "GuestAllowList": "DISALLOW",
+    "s3PermissionsAuthenticatedPublic": "DISALLOW",
+    "s3PermissionsAuthenticatedProtected": "DISALLOW",
+    "s3PermissionsAuthenticatedPrivate": "DISALLOW",
+    "s3PermissionsAuthenticatedUploads": "DISALLOW",
+    "AuthenticatedAllowList": "DISALLOW",
+    "triggerFunction": "NONE"
+}
