@@ -92,4 +92,11 @@ type User
   id: ID!
   username: String!
   password: String!
+  picture: S3Object
+}
+
+type S3Object {
+  bucket: String!
+  region: String!
+  key: String!
 }

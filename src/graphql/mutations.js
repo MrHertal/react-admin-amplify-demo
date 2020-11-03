@@ -523,6 +523,11 @@ export const createUser = /* GraphQL */ `
       id
       username
       password
+      picture {
+        bucket
+        region
+        key
+      }
       createdAt
       updatedAt
     }
@@ -537,6 +542,11 @@ export const updateUser = /* GraphQL */ `
       id
       username
       password
+      picture {
+        bucket
+        region
+        key
+      }
       createdAt
       updatedAt
     }
@@ -551,6 +561,11 @@ export const deleteUser = /* GraphQL */ `
       id
       username
       password
+      picture {
+        bucket
+        region
+        key
+      }
       createdAt
       updatedAt
     }
