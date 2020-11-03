@@ -3,18 +3,18 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@aws-amplify/api": "^3.1.17",
-    "@aws-amplify/auth": "^3.2.14",
-    "@aws-amplify/core": "^3.4.0",
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
-    "@testing-library/user-event": "^7.1.2",
-    "react": "^16.13.1",
-    "react-admin": "^3.7.0",
-    "react-admin-amplify": "^1.0.2",
-    "react-dom": "^16.13.1",
+    "@aws-amplify/api": "^3.2.10",
+    "@aws-amplify/auth": "^3.4.10",
+    "@aws-amplify/core": "^3.8.2",
+    "@testing-library/jest-dom": "^5.11.5",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
+    "react": "^17.0.1",
+    "react-admin": "^3.9.6",
+    "react-admin-amplify": "^1.1.0",
+    "react-dom": "^17.0.1",
     "react-google-recaptcha": "^2.1.0",
-    "react-scripts": "3.4.1"
+    "react-scripts": "4.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -40,6 +40,6 @@
   },
   "devDependencies": {
     "eslint-plugin-prettier": "^3.1.4",
-    "prettier": "2.0.5"
+    "prettier": "2.1.2"
   }
 }
