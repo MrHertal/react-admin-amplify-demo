@@ -687,6 +687,16 @@ export const getUser = /* GraphQL */ `
       id
       username
       password
+      picture {
+        bucket
+        region
+        key
+      }
+      documents {
+        bucket
+        region
+        key
+      }
       createdAt
       updatedAt
     }
@@ -703,6 +713,16 @@ export const listUsers = /* GraphQL */ `
         id
         username
         password
+        picture {
+          bucket
+          region
+          key
+        }
+        documents {
+          bucket
+          region
+          key
+        }
         createdAt
         updatedAt
       }
