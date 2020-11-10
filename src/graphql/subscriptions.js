@@ -471,6 +471,11 @@ export const onCreateUser = /* GraphQL */ `
         region
         key
       }
+      documents {
+        bucket
+        region
+        key
+      }
       createdAt
       updatedAt
     }
@@ -487,6 +492,11 @@ export const onUpdateUser = /* GraphQL */ `
         region
         key
       }
+      documents {
+        bucket
+        region
+        key
+      }
       createdAt
       updatedAt
     }
@@ -499,6 +509,11 @@ export const onDeleteUser = /* GraphQL */ `
       username
       password
       picture {
+        bucket
+        region
+        key
+      }
+      documents {
         bucket
         region
         key

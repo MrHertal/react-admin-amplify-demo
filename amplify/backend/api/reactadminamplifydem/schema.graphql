@@ -93,6 +93,7 @@ type User
   username: String!
   password: String!
   picture: S3Object
+  documents: [S3Object!]
 }
 
 type S3Object {

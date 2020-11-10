@@ -692,6 +692,11 @@ export const getUser = /* GraphQL */ `
         region
         key
       }
+      documents {
+        bucket
+        region
+        key
+      }
       createdAt
       updatedAt
     }
@@ -709,6 +714,11 @@ export const listUsers = /* GraphQL */ `
         username
         password
         picture {
+          bucket
+          region
+          key
+        }
+        documents {
           bucket
           region
           key
