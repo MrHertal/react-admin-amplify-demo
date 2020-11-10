@@ -42,20 +42,38 @@ Push project to the cloud:
 amplify push
 ```
 
-Do not use the custom login page:
+Do not retrieve demo user avatar and remove the custom login page:
 
 ```jsx
 // in App.js
 
+// Get the demo user avatar
+// authProvider.getIdentity = async () => {
+//   try {
+//     const userData = await API.graphql(
+//       graphqlOperation(queries.getUser, { id: "demo" })
+//     );
+
+//     const url = await Storage.get(userData.data.getUser.picture.key);
+
+//     return {
+//       id: "demo",
+//       fullName: "Demo",
+//       avatar: url,
+//     };
+//   } catch (e) {
+//     console.log(e);
+//   }
+// };
+
 function App() {
   return (
-    <AmplifyAdmin
-      operations={{ queries, mutations }}
-      options={{ authGroups: ["admin"] }}
-      // loginPage={LoginPage} Remove this line to set back the default login page
+    <Admin
+      authProvider={authProvider}
+      dataProvider={dataProvider}
+      // loginPage={LoginPage}
       dashboard={Dashboard}
-    >
-    </AmplifyAdmin>
+    ></Admin>
   );
 }
 ```
