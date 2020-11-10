@@ -87,11 +87,12 @@ type User
   @model
   @auth(rules: [
     { allow: public, operations: [read], provider: iam },
+    { allow: private, operations: [read] },
     { allow: groups, groups: ["superadmin"] }
   ]) {
   id: ID!
   username: String!
-  password: String!
+  password: String! # Demo user only - do not store password like this!
   picture: S3Object
   documents: [S3Object!]
 }

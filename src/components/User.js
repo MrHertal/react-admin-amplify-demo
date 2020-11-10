@@ -14,6 +14,12 @@ import {
   TextField,
   TextInput,
 } from "react-admin";
+import {
+  AmplifyFileField,
+  AmplifyFileInput,
+  AmplifyImageField,
+  AmplifyImageInput,
+} from "react-admin-amplify";
 import { Pagination } from "./Pagination";
 
 export const UserList = (props) => {
@@ -40,6 +46,12 @@ export const UserShow = (props) => (
       <TextField source="password" />
       <DateField source="createdAt" />
       <DateField source="updatedAt" />
+      <AmplifyImageField source="picture" title="Avatar" addLabel={true} />
+      <AmplifyFileField
+        source="documents"
+        storageOptions={{ level: "private" }}
+        addLabel={true}
+      />
     </SimpleShowLayout>
   </Show>
 );
@@ -53,6 +65,13 @@ export const UserEdit = (props) => (
       <TextInput source="id" disabled />
       <TextInput source="username" validate={validateUsername} />
       <TextInput source="password" validate={validatePassword} />
+      <AmplifyImageInput source="picture" accept="image/*" />
+      <AmplifyFileInput
+        source="documents"
+        accept="application/pdf"
+        multiple={true}
+        storageOptions={{ level: "private" }}
+      />
     </SimpleForm>
   </Edit>
 );
@@ -63,6 +82,13 @@ export const UserCreate = (props) => (
       <TextInput source="id" />
       <TextInput source="username" validate={validateUsername} />
       <TextInput source="password" validate={validatePassword} />
+      <AmplifyImageInput source="picture" accept="image/*" />
+      <AmplifyFileInput
+        source="documents"
+        accept="application/pdf"
+        multiple={true}
+        storageOptions={{ level: "private" }}
+      />
     </SimpleForm>
   </Create>
 );

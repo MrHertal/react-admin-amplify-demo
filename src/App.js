@@ -1,7 +1,9 @@
+import { API, graphqlOperation } from "@aws-amplify/api";
 import { Amplify } from "@aws-amplify/core";
+import { Storage } from "@aws-amplify/storage";
 import React from "react";
-import { Resource } from "react-admin";
-import { AmplifyAdmin } from "react-admin-amplify";
+import { Admin, Resource } from "react-admin";
+import { buildAuthProvider, buildDataProvider } from "react-admin-amplify";
 import awsExports from "./aws-exports";
 import {
   AccountRepresentativeCreate,
@@ -46,11 +48,43 @@ import * as queries from "./graphql/queries";
 
 Amplify.configure(awsExports);
 
+const authProvider = buildAuthProvider({ authGroups: ["admin"] });
+
+const dataProvider = buildDataProvider(
+  {
+    queries,
+    mutations,
+  },
+  {
+    storageBucket: awsExports.aws_user_files_s3_bucket,
+    storageRegion: awsExports.aws_user_files_s3_bucket_region,
+  }
+);
+
+// Get the demo user avatar
+authProvider.getIdentity = async () => {
+  try {
+    const userData = await API.graphql(
+      graphqlOperation(queries.getUser, { id: "demo" })
+    );
+
+    const url = await Storage.get(userData.data.getUser.picture.key);
+
+    return {
+      id: "demo",
+      fullName: "Demo",
+      avatar: url,
+    };
+  } catch (e) {
+    console.log(e);
+  }
+};
+
 function App() {
   return (
-    <AmplifyAdmin
-      operations={{ queries, mutations }}
-      options={{ authGroups: ["admin"] }}
+    <Admin
+      authProvider={authProvider}
+      dataProvider={dataProvider}
       loginPage={LoginPage}
       dashboard={Dashboard}
     >
@@ -107,7 +141,7 @@ function App() {
           />
         ) : null,
       ]}
-    </AmplifyAdmin>
+    </Admin>
   );
 }
 
