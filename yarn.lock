@@ -10434,10 +10434,10 @@ raw-body@2.4.0:
     iconv-lite "0.4.24"
     unpipe "1.0.0"
 
-react-admin-amplify@^1.2.1:
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/react-admin-amplify/-/react-admin-amplify-1.2.1.tgz#4c5e36d9d271d702f8cb6d53dd72ac7c5c791f90"
-  integrity sha512-/7JcudvN12z7GzvIH1jpgjIjHlgSDQxXzBn7rQ1SnLQoTM4Q/x+xnKYXD7gm3zSqbdyeBjP63JsfUNCHs7HNVA==
+react-admin-amplify@^1.2.3:
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/react-admin-amplify/-/react-admin-amplify-1.2.3.tgz#1d1c079642e20d109bdc62332b0b4a8b22d600e6"
+  integrity sha512-5oeLUkscIlVuqZc2TjP869P3iSVUHYQ1ar0ntOl0mc99hwEEnvKRBpXAkBSFyCbFP6oc2x2Up12MS9aoSraqDw==
   dependencies:
     uuid "^8.3.1"
 
