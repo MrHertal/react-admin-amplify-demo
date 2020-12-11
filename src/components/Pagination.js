@@ -63,7 +63,7 @@ export const Pagination = React.memo(
       [translate]
     );
 
-    if (total === 0) {
+    if (!total) {
       return loading ? <Toolbar variant="dense" /> : limit;
     }
 
