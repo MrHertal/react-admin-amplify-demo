@@ -78,6 +78,29 @@ function App() {
 }
 ```
 
+and remove the components LoginForm page:
+
+```
+  /*
+  useEffect(() => {
+    async function getDemoUser() {
+      const userData = await API.graphql({
+        query: getUser,
+        variables: { id: "demo" },
+        authMode: "AWS_IAM",
+      });
+
+      const user = userData.data.getUser;
+
+      setDemoUsername(user.username);
+      setDemoPassword(user.password);
+    }
+
+    getDemoUser().catch((e) => console.log(e));
+  }, []);
+  */
+```
+
 This will remove the reCaptcha. You need then to remove the pre auth trigger:
 
 ```sh
