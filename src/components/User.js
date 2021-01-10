@@ -20,11 +20,10 @@ import {
   AmplifyImageField,
   AmplifyImageInput,
 } from "react-admin-amplify";
-import { Pagination } from "./Pagination";
 
 export const UserList = (props) => {
   return (
-    <List {...props} pagination={<Pagination />}>
+    <List {...props}>
       <Datagrid>
         <TextField source="id" sortable={false} />
         <TextField source="username" sortable={false} />
