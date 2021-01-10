@@ -40,3 +40,5 @@ amplifytools.xcconfig
 amplify/logs
 
 amplify/team-provider-info.json
+
+.eslintcache

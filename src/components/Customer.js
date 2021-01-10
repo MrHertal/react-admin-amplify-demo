@@ -18,7 +18,6 @@ import {
   TextInput,
 } from "react-admin";
 import { AmplifyFilter } from "react-admin-amplify";
-import { Pagination } from "./Pagination";
 
 const defaultQuery = "listCustomers";
 
@@ -37,11 +36,7 @@ export const CustomerList = (props) => {
   const [query, setQuery] = useState(defaultQuery);
 
   return (
-    <List
-      {...props}
-      filters={<CustomerFilter setQuery={setQuery} />}
-      pagination={<Pagination />}
-    >
+    <List {...props} filters={<CustomerFilter setQuery={setQuery} />}>
       <Datagrid>
         <TextField
           source="id"
@@ -83,7 +78,6 @@ export const CustomerShow = (props) => (
         target="ordersByCustomerByDate.customerID"
         label="Orders"
         perPage={10}
-        pagination={<Pagination />}
       >
         <Datagrid>
           <TextField source="id" sortable={false} />

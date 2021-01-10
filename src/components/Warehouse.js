@@ -16,11 +16,10 @@ import {
   TextField,
   TextInput,
 } from "react-admin";
-import { Pagination } from "./Pagination";
 
 export const WarehouseList = (props) => {
   return (
-    <List {...props} pagination={<Pagination />}>
+    <List {...props}>
       <Datagrid>
         <TextField source="id" sortable={false} />
         <ArrayField source="employees.items" label="Employees" sortable={false}>
@@ -45,7 +44,6 @@ export const WarehouseShow = (props) => (
         target="employeesByWarehouse.warehouseID"
         label="Employees"
         perPage={10}
-        pagination={<Pagination />}
       >
         <Datagrid>
           <TextField source="id" sortable={false} />
