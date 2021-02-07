@@ -48,7 +48,9 @@ import * as queries from "./graphql/queries";
 
 Amplify.configure(awsExports);
 
-const authProvider = buildAuthProvider({ authGroups: ["admin"] });
+const authProvider = buildAuthProvider({
+  authGroups: ["superadmin", "admin"],
+});
 
 const dataProvider = buildDataProvider(
   {

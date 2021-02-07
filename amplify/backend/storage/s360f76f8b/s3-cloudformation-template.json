@@ -56,7 +56,7 @@
 		"s3PermissionsGuestPublic": {
 			"Type": "String",
 			"Default" : "DISALLOW"
-		},	
+		},
 		"s3PermissionsGuestUploads": {
 			"Type": "String",
 			"Default" : "DISALLOW"		},
@@ -85,9 +85,9 @@
 	
     
     
-        "authreactadminamplifydem9cde0abfUserPoolId": {
+        "authreactadminamplifydem51487c4e51487c4eUserPoolId": {
             "Type": "String",
-            "Default": "authreactadminamplifydem9cde0abfUserPoolId"
+            "Default": "authreactadminamplifydem51487c4e51487c4eUserPoolId"
         },
         
         
@@ -265,7 +265,7 @@
                         "",
                         [
                           {
-                            "Ref": "authreactadminamplifydem9cde0abfUserPoolId"
+                            "Ref": "authreactadminamplifydem51487c4e51487c4eUserPoolId"
                           },
                           "-superadminGroupRole"
                         ]
@@ -292,7 +292,26 @@
 	                      ]
 	                  }
 	              ]
-	            }
+              }
+              
+              ,{
+                "Effect": "Allow",
+                "Action": ["s3:ListBucket"],
+                "Resource": [
+                    {
+                        "Fn::Join": [
+                            "",
+                            [
+                                "arn:aws:s3:::",
+                                {
+                                    "Ref": "S3Bucket"
+                                }
+                            ]
+                        ]
+                    }
+                ]
+              }
+              
 	          ]
 	        }
 	      }
@@ -308,7 +327,7 @@
                         "",
                         [
                           {
-                            "Ref": "authreactadminamplifydem9cde0abfUserPoolId"
+                            "Ref": "authreactadminamplifydem51487c4e51487c4eUserPoolId"
                           },
                           "-adminGroupRole"
                         ]
@@ -335,7 +354,26 @@
 	                      ]
 	                  }
 	              ]
-	            }
+              }
+              
+              ,{
+                "Effect": "Allow",
+                "Action": ["s3:ListBucket"],
+                "Resource": [
+                    {
+                        "Fn::Join": [
+                            "",
+                            [
+                                "arn:aws:s3:::",
+                                {
+                                    "Ref": "S3Bucket"
+                                }
+                            ]
+                        ]
+                    }
+                ]
+              }
+              
 	          ]
 	        }
 	      }
@@ -366,7 +404,7 @@
 							"Action": {
 								"Fn::Split" : [ "," , {
 									"Ref": "s3PermissionsAuthenticatedPublic"
-								} ] 
+								} ]
 							},
 							"Resource": [
 								{
@@ -410,7 +448,7 @@
 							"Action": {
 								"Fn::Split" : [ "," , {
 									"Ref": "s3PermissionsAuthenticatedProtected"
-								} ] 
+								} ]
 							},
 							"Resource": [
 								{
@@ -454,7 +492,7 @@
 							"Action": {
 								"Fn::Split" : [ "," , {
 									"Ref": "s3PermissionsAuthenticatedPrivate"
-								} ] 
+								} ]
 							},
 							"Resource": [
 								{
@@ -498,7 +536,7 @@
 							"Action": {
 								"Fn::Split" : [ "," , {
 									"Ref": "s3PermissionsAuthenticatedUploads"
-								} ] 
+								} ]
 							},
 							"Resource": [
 								{
@@ -615,7 +653,7 @@
 							"Action": {
 								"Fn::Split" : [ "," , {
 									"Ref": "s3PermissionsGuestPublic"
-								} ] 
+								} ]
 							},
 							"Resource": [
 								{
@@ -659,7 +697,7 @@
 							"Action": {
 								"Fn::Split" : [ "," , {
 									"Ref": "s3PermissionsGuestUploads"
-								} ] 
+								} ]
 							},
 							"Resource": [
 								{

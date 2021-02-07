@@ -1,12 +1,11 @@
 {
-    "AppSyncApiName": "reactadminamplifydem",
-    "DynamoDBBillingMode": "PAY_PER_REQUEST",
-    "DynamoDBEnableServerSideEncryption": "false",
-    "AuthCognitoUserPoolId": {
-        "Fn::GetAtt": [
-            "authreactadminamplifydem9cde0abf",
-            "Outputs.UserPoolId"
-        ]
-    },
-    "APIKeyExpirationEpoch": 1626425747
+  "AppSyncApiName": "reactadminamplifydem",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthCognitoUserPoolId": {
+    "Fn::GetAtt": [
+      "authreactadminamplifydem51487c4e51487c4e",
+      "Outputs.UserPoolId"
+    ]
+  }
 }
