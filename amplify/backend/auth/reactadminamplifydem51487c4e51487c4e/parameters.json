@@ -1,8 +1,8 @@
 {
-    "identityPoolName": "reactadminamplifydem9cde0abf_identitypool_9cde0abf",
+    "identityPoolName": "reactadminamplifydem51487c4e_identitypool_51487c4e",
     "allowUnauthenticatedIdentities": true,
-    "resourceNameTruncated": "reacta9cde0abf",
-    "userPoolName": "reactadminamplifydem9cde0abf_userpool_9cde0abf",
+    "resourceNameTruncated": "reacta51487c4e",
+    "userPoolName": "reactadminamplifydem51487c4e_userpool_51487c4e",
     "autoVerifiedAttributes": [
         "email"
     ],
@@ -28,10 +28,10 @@
     "userpoolClientReadAttributes": [
         "email"
     ],
-    "userpoolClientLambdaRole": "reacta9cde0abf_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "reacta51487c4e_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "9cde0abf",
-    "resourceName": "reactadminamplifydem9cde0abf",
+    "sharedId": "51487c4e",
+    "resourceName": "reactadminamplifydem51487c4e51487c4e",
     "authSelections": "identityPoolAndUserPool",
     "authRoleArn": {
         "Fn::GetAtt": [
@@ -46,29 +46,17 @@
         ]
     },
     "useDefault": "manual",
-    "userPoolGroupList": [
-        "superadmin",
-        "admin"
-    ],
-    "dependsOn": [
-        {
-            "category": "function",
-            "resourceName": "reactadminamplifydem9cde0abfPreAuthentication",
-            "triggerProvider": "Cognito",
-            "attributes": [
-                "Arn",
-                "Name"
-            ]
-        }
-    ],
     "thirdPartyAuth": false,
     "userPoolGroups": false,
     "adminQueries": false,
-    "triggers": "{\n  \"PreAuthentication\": [\n    \"custom\"\n  ]\n}",
+    "triggers": "{}",
     "hostedUI": false,
+    "userPoolGroupList": [],
+    "serviceName": "Cognito",
+    "usernameCaseSensitive": false,
     "parentStack": {
         "Ref": "AWS::StackId"
     },
     "permissions": [],
-    "serviceName": "Cognito"
+    "dependsOn": []
 }

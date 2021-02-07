@@ -1,23 +1,23 @@
 {
     "AWSTemplateFormatVersion": "2010-09-09",
     "Parameters": {
-        "authreactadminamplifydem9cde0abfUserPoolId": {
+        "authreactadminamplifydem51487c4e51487c4eUserPoolId": {
             "Type": "String",
-            "Default": "authreactadminamplifydem9cde0abfUserPoolId"
+            "Default": "authreactadminamplifydem51487c4e51487c4eUserPoolId"
         },
         
-        "authreactadminamplifydem9cde0abfIdentityPoolId": {
+        "authreactadminamplifydem51487c4e51487c4eIdentityPoolId": {
             "Type": "String",
-            "Default": "authreactadminamplifydem9cde0abfIdentityPoolId"
+            "Default": "authreactadminamplifydem51487c4e51487c4eIdentityPoolId"
         },
         
-        "authreactadminamplifydem9cde0abfAppClientID": {
+        "authreactadminamplifydem51487c4e51487c4eAppClientID": {
             "Type": "String",
-            "Default": "authreactadminamplifydem9cde0abfAppClientID"
+            "Default": "authreactadminamplifydem51487c4e51487c4eAppClientID"
         },
-        "authreactadminamplifydem9cde0abfAppClientIDWeb": {
+        "authreactadminamplifydem51487c4e51487c4eAppClientIDWeb": {
             "Type": "String",
-            "Default": "authreactadminamplifydem9cde0abfAppClientIDWeb"
+            "Default": "authreactadminamplifydem51487c4e51487c4eAppClientIDWeb"
         },
         "AuthRoleArn": {
             "Type": "String"
@@ -55,7 +55,7 @@
               },
               
               "UserPoolId" : {
-                "Ref": "authreactadminamplifydem9cde0abfUserPoolId"
+                "Ref": "authreactadminamplifydem51487c4e51487c4eUserPoolId"
               } 
             }
         },
@@ -68,7 +68,7 @@
                         "",
                         [
                           {
-                            "Ref": "authreactadminamplifydem9cde0abfUserPoolId"
+                            "Ref": "authreactadminamplifydem51487c4e51487c4eUserPoolId"
                           },
                           "-superadminGroupRole"
                         ]
@@ -85,7 +85,7 @@
                             },
                             "Action": "sts:AssumeRoleWithWebIdentity",
                             "Condition": {
-                              "StringEquals": {"cognito-identity.amazonaws.com:aud": {"Ref":"authreactadminamplifydem9cde0abfIdentityPoolId"}},
+                              "StringEquals": {"cognito-identity.amazonaws.com:aud": {"Ref":"authreactadminamplifydem51487c4e51487c4eIdentityPoolId"}},
                               "ForAnyValue:StringLike": {"cognito-identity.amazonaws.com:amr": "authenticated"}
                             }
                         }
@@ -109,7 +109,7 @@
               },
               
               "UserPoolId" : {
-                "Ref": "authreactadminamplifydem9cde0abfUserPoolId"
+                "Ref": "authreactadminamplifydem51487c4e51487c4eUserPoolId"
               } 
             }
         },
@@ -122,7 +122,7 @@
                         "",
                         [
                           {
-                            "Ref": "authreactadminamplifydem9cde0abfUserPoolId"
+                            "Ref": "authreactadminamplifydem51487c4e51487c4eUserPoolId"
                           },
                           "-adminGroupRole"
                         ]
@@ -139,7 +139,7 @@
                             },
                             "Action": "sts:AssumeRoleWithWebIdentity",
                             "Condition": {
-                              "StringEquals": {"cognito-identity.amazonaws.com:aud": {"Ref":"authreactadminamplifydem9cde0abfIdentityPoolId"}},
+                              "StringEquals": {"cognito-identity.amazonaws.com:aud": {"Ref":"authreactadminamplifydem51487c4e51487c4eIdentityPoolId"}},
                               "ForAnyValue:StringLike": {"cognito-identity.amazonaws.com:amr": "authenticated"}
                             }
                         }
@@ -165,7 +165,7 @@
                                 "",
                                 [
                                   
-                                  "reactadminamplifydem9cde0abf",
+                                  "reactadminamplifydem51487c4e51487c4e",
                                   "-ExecutionRole-",
                                   {
                                     "Ref": "env"
@@ -324,16 +324,16 @@
                     "Ref": "UnauthRoleArn"
                 },
                 "identityPoolId": {
-                    "Ref": "authreactadminamplifydem9cde0abfIdentityPoolId"
+                    "Ref": "authreactadminamplifydem51487c4e51487c4eIdentityPoolId"
                 },
                 "userPoolId": {
-                    "Ref": "authreactadminamplifydem9cde0abfUserPoolId"
+                    "Ref": "authreactadminamplifydem51487c4e51487c4eUserPoolId"
                 },
                 "appClientIDWeb": {
-                    "Ref": "authreactadminamplifydem9cde0abfAppClientIDWeb"
+                    "Ref": "authreactadminamplifydem51487c4e51487c4eAppClientIDWeb"
                 },
                 "appClientID": {
-                    "Ref": "authreactadminamplifydem9cde0abfAppClientID"
+                    "Ref": "authreactadminamplifydem51487c4e51487c4eAppClientID"
                 },
                 "region": {
                     "Ref": "AWS::Region"

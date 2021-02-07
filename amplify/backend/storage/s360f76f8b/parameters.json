@@ -1,7 +1,7 @@
 {
-    "bucketName": "reactadminamplifydem71c8a54b6cb8437f932649ce964",
-    "authPolicyName": "s3_amplify_87edb1da",
-    "unauthPolicyName": "s3_amplify_87edb1da",
+    "bucketName": "reactadminamplifydemf4c30126856a4ef9908a9a5a18c",
+    "authPolicyName": "s3_amplify_60f76f8b",
+    "unauthPolicyName": "s3_amplify_60f76f8b",
     "authRoleName": {
         "Ref": "AuthRoleName"
     },
