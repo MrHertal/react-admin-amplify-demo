@@ -2,7 +2,7 @@
 
 This project aims to demonstrate the use of [React Admin Amplify](https://github.com/MrHertal/react-admin-amplify).
 
-The demo is accessible here: <https://dev.d10isjcm6q3oja.amplifyapp.com>.
+The demo is accessible here: <https://master.d3os44oci7szj2.amplifyapp.com>.
 
 Feel free to play with it!
 
