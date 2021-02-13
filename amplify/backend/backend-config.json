@@ -42,6 +42,27 @@
           ]
         }
       }
+    },
+    "AdminQueries": {
+      "service": "API Gateway",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [
+        {
+          "category": "auth",
+          "resourceName": "reactadminamplifydem51487c4e51487c4e",
+          "attributes": [
+            "UserPoolId"
+          ]
+        },
+        {
+          "category": "function",
+          "resourceName": "AdminQueries6ffead5e",
+          "attributes": [
+            "Arn",
+            "Name"
+          ]
+        }
+      ]
     }
   },
   "storage": {
@@ -68,6 +89,22 @@
           "resourceName": "userPoolGroups",
           "attributes": [
             "adminGroupRole"
+          ]
+        }
+      ]
+    }
+  },
+  "function": {
+    "AdminQueries6ffead5e": {
+      "service": "Lambda",
+      "providerPlugin": "awscloudformation",
+      "build": true,
+      "dependsOn": [
+        {
+          "category": "auth",
+          "resourceName": "reactadminamplifydem51487c4e51487c4e",
+          "attributes": [
+            "UserPoolId"
           ]
         }
       ]
