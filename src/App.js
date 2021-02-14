@@ -3,7 +3,13 @@ import { Amplify } from "@aws-amplify/core";
 import { Storage } from "@aws-amplify/storage";
 import React from "react";
 import { Admin, Resource } from "react-admin";
-import { buildAuthProvider, buildDataProvider } from "react-admin-amplify";
+import {
+  buildAuthProvider,
+  buildDataProvider,
+  CognitoGroupList,
+  CognitoUserList,
+  CognitoUserShow,
+} from "react-admin-amplify";
 import awsExports from "./aws-exports";
 import {
   AccountRepresentativeCreate,
@@ -37,7 +43,6 @@ import {
   ProductList,
   ProductShow,
 } from "./components/Product";
-import { UserCreate, UserEdit, UserList, UserShow } from "./components/User";
 import {
   WarehouseCreate,
   WarehouseList,
@@ -60,6 +65,7 @@ const dataProvider = buildDataProvider(
   {
     storageBucket: awsExports.aws_user_files_s3_bucket,
     storageRegion: awsExports.aws_user_files_s3_bucket_region,
+    enableAdminQueries: true,
   }
 );
 
@@ -135,11 +141,17 @@ function App() {
         />,
         permissions.includes("superadmin") ? (
           <Resource
-            name="users"
-            list={UserList}
-            show={UserShow}
-            edit={UserEdit}
-            create={UserCreate}
+            name="cognitoUsers"
+            options={{ label: "Cognito Users" }}
+            list={CognitoUserList}
+            show={CognitoUserShow}
+          />
+        ) : null,
+        permissions.includes("superadmin") ? (
+          <Resource
+            name="cognitoGroups"
+            options={{ label: "Cognito Groups" }}
+            list={CognitoGroupList}
           />
         ) : null,
       ]}
