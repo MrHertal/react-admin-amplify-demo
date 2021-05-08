@@ -56,7 +56,7 @@
               
               "UserPoolId" : {
                 "Ref": "authreactadminamplifydem51487c4e51487c4eUserPoolId"
-              } 
+              }
             }
         },
         
@@ -110,7 +110,7 @@
               
               "UserPoolId" : {
                 "Ref": "authreactadminamplifydem51487c4e51487c4eUserPoolId"
-              } 
+              }
             }
         },
         
@@ -158,13 +158,13 @@
                         "ShouldNotCreateEnvResources",
                         {
                            
-                        }, 
+                        },
                         {
 
                             "Fn::Join": [
                                 "",
                                 [
-                                  
+
                                   "reactadminamplifydem51487c4e51487c4e",
                                   "-ExecutionRole-",
                                   {
@@ -172,7 +172,7 @@
                                   }
                                 ]
                             ]
-                        }       
+                        }
                     ]
                 },
                 "AssumeRolePolicyDocument": {
@@ -287,7 +287,7 @@
                                 "    cognitoidentity.setIdentityPoolRoles(params).promise();",
                                 "    response.send(event, context, response.SUCCESS, {message: 'Successfully updated identity pool.'})",
                                 "    } catch(err) {",
-                                
+
                                 "        response.send(event, context, response.FAILED, {message: 'Error updating identity pool'});",
                                 "    }",
                                 "   };",
@@ -298,7 +298,7 @@
                     }
                 },
                 "Handler": "index.handler",
-                "Runtime": "nodejs10.x",
+                "Runtime": "nodejs12.x",
                 "Timeout": "300",
                 "Role": {
                     "Fn::GetAtt": [
@@ -356,7 +356,7 @@
                     "Arn"
                 ]
             }
-         
+        
         },
         
       
