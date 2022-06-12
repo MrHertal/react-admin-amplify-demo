@@ -24,8 +24,6 @@ yarn-error.log*
 
 amplify/team-provider-info.json
 
-.eslintcache
-
 #amplify-do-not-edit-begin
 amplify/\#current-cloud-backend
 amplify/.config/local-*
