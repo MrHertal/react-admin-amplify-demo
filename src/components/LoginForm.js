@@ -1,12 +1,12 @@
-import { API } from "@aws-amplify/api";
 import Button from "@material-ui/core/Button";
 import CardActions from "@material-ui/core/CardActions";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
+import { API } from "aws-amplify";
 import PropTypes from "prop-types";
 import { useLogin, useNotify, useSafeSetState, useTranslate } from "ra-core";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Field, Form } from "react-final-form";
 import { getUser } from "../graphql/queries";
 
