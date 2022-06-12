@@ -1,55 +1,31 @@
-import Button from "@material-ui/core/Button";
-import CardActions from "@material-ui/core/CardActions";
-import CircularProgress from "@material-ui/core/CircularProgress";
-import { makeStyles } from "@material-ui/core/styles";
-import TextField from "@material-ui/core/TextField";
+import { Button, CardContent, CircularProgress } from "@mui/material";
+import { styled } from "@mui/material/styles";
 import { API } from "aws-amplify";
-import PropTypes from "prop-types";
-import { useLogin, useNotify, useSafeSetState, useTranslate } from "ra-core";
+import {
+  Form,
+  required,
+  useLogin,
+  useNotify,
+  useSafeSetState,
+  useTranslate,
+} from "ra-core";
 import { useEffect, useState } from "react";
-import { Field, Form } from "react-final-form";
+import { TextInput } from "react-admin";
 import { getUser } from "../graphql/queries";
 
-const useStyles = makeStyles(
-  (theme) => ({
-    form: {
-      padding: "0 1em 1em 1em",
-    },
-    input: {
-      marginTop: "1em",
-    },
-    button: {
-      width: "100%",
-    },
-    icon: {
-      marginRight: theme.spacing(1),
-    },
-  }),
-  { name: "RaLoginForm" }
-);
-
-const Input = ({ meta: { touched, error }, input: inputProps, ...props }) => (
-  <TextField
-    error={!!(touched && error)}
-    helperText={touched && error}
-    {...inputProps}
-    {...props}
-    fullWidth
-  />
-);
-
 export const LoginForm = (props) => {
-  const { redirectTo } = props;
+  const { redirectTo, className } = props;
   const [loading, setLoading] = useSafeSetState(false);
   const login = useLogin();
   const translate = useTranslate();
   const notify = useNotify();
-  const classes = useStyles(props);
-
-  const [demoUsername, setDemoUsername] = useState("");
-  const [demoPassword, setDemoPassword] = useState("");
+  const [demoUser, setDemoUser] = useState(null);
 
   useEffect(() => {
+    if (demoUser) {
+      return;
+    }
+
     async function getDemoUser() {
       const userData = await API.graphql({
         query: getUser,
@@ -57,26 +33,17 @@ export const LoginForm = (props) => {
         authMode: "AWS_IAM",
       });
 
-      const user = userData.data.getUser;
+      const { username, password } = userData.data.getUser;
 
-      setDemoUsername(user.username);
-      setDemoPassword(user.password);
+      setDemoUser({ username, password });
     }
 
-    getDemoUser().catch((e) => console.log(e));
-  }, []);
+    getDemoUser();
+  });
 
-  const validate = (values) => {
-    const errors = { username: undefined, password: undefined };
-
-    if (!values.username) {
-      errors.username = translate("ra.validation.required");
-    }
-    if (!values.password) {
-      errors.password = translate("ra.validation.required");
-    }
-    return errors;
-  };
+  if (!demoUser) {
+    return null;
+  }
 
   const submit = (values) => {
     setLoading(true);
@@ -92,67 +59,88 @@ export const LoginForm = (props) => {
             : typeof error === "undefined" || !error.message
             ? "ra.auth.sign_in_error"
             : error.message,
-          "warning"
+          {
+            type: "warning",
+            messageArgs: {
+              _:
+                typeof error === "string"
+                  ? error
+                  : error && error.message
+                  ? error.message
+                  : undefined,
+            },
+          }
         );
       });
   };
 
   return (
-    <Form
+    <StyledForm
       onSubmit={submit}
-      validate={validate}
-      initialValues={{
-        username: demoUsername,
-        password: demoPassword,
-      }}
-      render={({ handleSubmit }) => (
-        <form onSubmit={handleSubmit} noValidate>
-          <div className={classes.form}>
-            <div className={classes.input}>
-              <Field
-                id="username"
-                name="username"
-                component={Input}
-                label={translate("ra.auth.username")}
-                disabled={loading}
-              />
-            </div>
-            <div className={classes.input}>
-              <Field
-                id="password"
-                name="password"
-                component={Input}
-                label={translate("ra.auth.password")}
-                type="password"
-                disabled={loading}
-                autoComplete="current-password"
-              />
-            </div>
-          </div>
-          <CardActions>
-            <Button
-              variant="contained"
-              type="submit"
-              color="primary"
-              disabled={loading}
-              className={classes.button}
-            >
-              {loading && (
-                <CircularProgress
-                  className={classes.icon}
-                  size={18}
-                  thickness={2}
-                />
-              )}
-              {translate("ra.auth.sign_in")}
-            </Button>
-          </CardActions>
-        </form>
-      )}
-    />
+      mode="onChange"
+      noValidate
+      className={className}
+      defaultValues={demoUser}
+    >
+      <CardContent className={LoginFormClasses.content}>
+        <TextInput
+          autoFocus
+          source="username"
+          label={translate("ra.auth.username")}
+          validate={required()}
+          fullWidth
+        />
+        <TextInput
+          source="password"
+          label={translate("ra.auth.password")}
+          type="password"
+          autoComplete="current-password"
+          validate={required()}
+          fullWidth
+        />
+
+        <Button
+          variant="contained"
+          type="submit"
+          color="primary"
+          disabled={loading}
+          fullWidth
+          className={LoginFormClasses.button}
+        >
+          {loading ? (
+            <CircularProgress
+              className={LoginFormClasses.icon}
+              size={19}
+              thickness={3}
+            />
+          ) : (
+            translate("ra.auth.sign_in")
+          )}
+        </Button>
+      </CardContent>
+    </StyledForm>
   );
 };
 
-LoginForm.propTypes = {
-  redirectTo: PropTypes.string,
+const PREFIX = "RaLoginForm";
+
+export const LoginFormClasses = {
+  content: `${PREFIX}-content`,
+  button: `${PREFIX}-button`,
+  icon: `${PREFIX}-icon`,
 };
+
+const StyledForm = styled(Form, {
+  name: PREFIX,
+  overridesResolver: (props, styles) => styles.root,
+})(({ theme }) => ({
+  [`& .${LoginFormClasses.content}`]: {
+    width: 300,
+  },
+  [`& .${LoginFormClasses.button}`]: {
+    marginTop: theme.spacing(2),
+  },
+  [`& .${LoginFormClasses.icon}`]: {
+    margin: theme.spacing(0.3),
+  },
+}));
