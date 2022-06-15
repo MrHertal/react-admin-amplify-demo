@@ -47,13 +47,15 @@ const OrderFilter = (props) => (
     <ReferenceInput
       source="ordersByProduct.productID"
       reference="products"
-      label="Product"
-      filterToQuery={(searchText) => ({
-        productsByName: { name: searchText },
-      })}
       alwaysOn
     >
-      <AutocompleteInput optionText="name" />
+      <AutocompleteInput
+        label="Product"
+        filterToQuery={(searchText) => ({
+          productsByName: { name: searchText },
+        })}
+        optionText="name"
+      />
     </ReferenceInput>
   </AmplifyFilter>
 );
