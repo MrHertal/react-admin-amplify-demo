@@ -1,7 +1,4 @@
-import { API, graphqlOperation } from "@aws-amplify/api";
-import { Amplify } from "@aws-amplify/core";
-import { Storage } from "@aws-amplify/storage";
-import React from "react";
+import { Amplify, API, graphqlOperation, Storage } from "aws-amplify";
 import { Admin, Resource } from "react-admin";
 import {
   buildAuthProvider,

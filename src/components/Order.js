@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import {
   AutocompleteInput,
   Create,
@@ -47,13 +47,15 @@ const OrderFilter = (props) => (
     <ReferenceInput
       source="ordersByProduct.productID"
       reference="products"
-      label="Product"
-      filterToQuery={(searchText) => ({
-        productsByName: { name: searchText },
-      })}
       alwaysOn
     >
-      <AutocompleteInput optionText="name" />
+      <AutocompleteInput
+        label="Product"
+        filterToQuery={(searchText) => ({
+          productsByName: { name: searchText },
+        })}
+        optionText="name"
+      />
     </ReferenceInput>
   </AmplifyFilter>
 );
@@ -156,13 +158,15 @@ export const OrderEdit = (props) => (
       <ReferenceInput
         source="productID"
         reference="products"
-        label="Product"
-        filterToQuery={(searchText) => ({
-          productsByName: { name: searchText },
-        })}
         validate={validateProduct}
       >
-        <AutocompleteInput optionText="name" />
+        <AutocompleteInput
+          label="Product"
+          filterToQuery={(searchText) => ({
+            productsByName: { name: searchText },
+          })}
+          optionText="name"
+        />
       </ReferenceInput>
       <TextInput source="status" validate={validateStatus} />
       <NumberInput source="amount" validate={validateAmount} />
@@ -188,13 +192,15 @@ export const OrderCreate = (props) => (
       <ReferenceInput
         source="productID"
         reference="products"
-        label="Product"
-        filterToQuery={(searchText) => ({
-          productsByName: { name: searchText },
-        })}
         validate={validateProduct}
       >
-        <AutocompleteInput optionText="name" />
+        <AutocompleteInput
+          label="Product"
+          filterToQuery={(searchText) => ({
+            productsByName: { name: searchText },
+          })}
+          optionText="name"
+        />
       </ReferenceInput>
       <TextInput source="status" validate={validateStatus} />
       <NumberInput source="amount" validate={validateAmount} />

@@ -1,8 +1,7 @@
-import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
-import Link from "@material-ui/core/Link";
-import Typography from "@material-ui/core/Typography";
-import React from "react";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import Link from "@mui/material/Link";
+import Typography from "@mui/material/Typography";
 import { Title } from "react-admin";
 
 export const Dashboard = () => (
