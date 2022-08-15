@@ -93,65 +93,67 @@ function App() {
       loginPage={LoginPage}
       dashboard={Dashboard}
     >
-      {(permissions) => [
-        <Resource
-          name="orders"
-          list={OrderList}
-          show={OrderShow}
-          edit={OrderEdit}
-          create={OrderCreate}
-        />,
-        <Resource
-          name="customers"
-          list={CustomerList}
-          show={CustomerShow}
-          edit={CustomerEdit}
-          create={CustomerCreate}
-        />,
-        <Resource
-          name="employees"
-          list={EmployeeList}
-          show={EmployeeShow}
-          edit={EmployeeEdit}
-          create={EmployeeCreate}
-        />,
-        <Resource
-          name="warehouses"
-          list={WarehouseList}
-          show={WarehouseShow}
-          create={WarehouseCreate}
-        />,
-        <Resource
-          name="accountRepresentatives"
-          options={{ label: "Account Reps" }}
-          list={AccountRepresentativeList}
-          show={AccountRepresentativeShow}
-          edit={AccountRepresentativeEdit}
-          create={AccountRepresentativeCreate}
-        />,
-        <Resource
-          name="products"
-          list={ProductList}
-          show={ProductShow}
-          edit={ProductEdit}
-          create={ProductCreate}
-        />,
-        permissions.includes("superadmin") ? (
+      {(permissions) => (
+        <>
           <Resource
-            name="cognitoUsers"
-            options={{ label: "Cognito Users" }}
-            list={CognitoUserList}
-            show={CognitoUserShow}
+            name="orders"
+            list={OrderList}
+            show={OrderShow}
+            edit={OrderEdit}
+            create={OrderCreate}
           />
-        ) : null,
-        permissions.includes("superadmin") ? (
           <Resource
-            name="cognitoGroups"
-            options={{ label: "Cognito Groups" }}
-            list={CognitoGroupList}
+            name="customers"
+            list={CustomerList}
+            show={CustomerShow}
+            edit={CustomerEdit}
+            create={CustomerCreate}
           />
-        ) : null,
-      ]}
+          <Resource
+            name="employees"
+            list={EmployeeList}
+            show={EmployeeShow}
+            edit={EmployeeEdit}
+            create={EmployeeCreate}
+          />
+          <Resource
+            name="warehouses"
+            list={WarehouseList}
+            show={WarehouseShow}
+            create={WarehouseCreate}
+          />
+          <Resource
+            name="accountRepresentatives"
+            options={{ label: "Account Reps" }}
+            list={AccountRepresentativeList}
+            show={AccountRepresentativeShow}
+            edit={AccountRepresentativeEdit}
+            create={AccountRepresentativeCreate}
+          />
+          <Resource
+            name="products"
+            list={ProductList}
+            show={ProductShow}
+            edit={ProductEdit}
+            create={ProductCreate}
+          />
+          {permissions?.includes("superadmin") ? (
+            <Resource
+              name="cognitoUsers"
+              options={{ label: "Cognito Users" }}
+              list={CognitoUserList}
+              show={CognitoUserShow}
+            />
+          ) : null}
+          {permissions?.includes("superadmin") ? (
+            <Resource
+              name="cognitoGroups"
+              options={{ label: "Cognito Groups" }}
+              list={CognitoGroupList}
+            />
+          ) : null}
+        </>
+      )}
     </Admin>
   );
 }
