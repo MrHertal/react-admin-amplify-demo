@@ -13,6 +13,7 @@ export const onCreateOrder = /* GraphQL */ `
       date
       createdAt
       updatedAt
+      __typename
     }
   }
 `;
@@ -28,6 +29,7 @@ export const onUpdateOrder = /* GraphQL */ `
       date
       createdAt
       updatedAt
+      __typename
     }
   }
 `;
@@ -43,6 +45,7 @@ export const onDeleteOrder = /* GraphQL */ `
       date
       createdAt
       updatedAt
+      __typename
     }
   }
 `;
@@ -54,35 +57,16 @@ export const onCreateCustomer = /* GraphQL */ `
       phoneNumber
       accountRepresentativeID
       ordersByDate {
-        items {
-          id
-          customerID
-          accountRepresentativeID
-          productID
-          status
-          amount
-          date
-          createdAt
-          updatedAt
-        }
         nextToken
+        __typename
       }
       ordersByStatusDate {
-        items {
-          id
-          customerID
-          accountRepresentativeID
-          productID
-          status
-          amount
-          date
-          createdAt
-          updatedAt
-        }
         nextToken
+        __typename
       }
       createdAt
       updatedAt
+      __typename
     }
   }
 `;
@@ -94,35 +78,16 @@ export const onUpdateCustomer = /* GraphQL */ `
       phoneNumber
       accountRepresentativeID
       ordersByDate {
-        items {
-          id
-          customerID
-          accountRepresentativeID
-          productID
-          status
-          amount
-          date
-          createdAt
-          updatedAt
-        }
         nextToken
+        __typename
       }
       ordersByStatusDate {
-        items {
-          id
-          customerID
-          accountRepresentativeID
-          productID
-          status
-          amount
-          date
-          createdAt
-          updatedAt
-        }
         nextToken
+        __typename
       }
       createdAt
       updatedAt
+      __typename
     }
   }
 `;
@@ -134,35 +99,16 @@ export const onDeleteCustomer = /* GraphQL */ `
       phoneNumber
       accountRepresentativeID
       ordersByDate {
-        items {
-          id
-          customerID
-          accountRepresentativeID
-          productID
-          status
-          amount
-          date
-          createdAt
-          updatedAt
-        }
         nextToken
+        __typename
       }
       ordersByStatusDate {
-        items {
-          id
-          customerID
-          accountRepresentativeID
-          productID
-          status
-          amount
-          date
-          createdAt
-          updatedAt
-        }
         nextToken
+        __typename
       }
       createdAt
       updatedAt
+      __typename
     }
   }
 `;
@@ -178,6 +124,7 @@ export const onCreateEmployee = /* GraphQL */ `
       newHire
       createdAt
       updatedAt
+      __typename
     }
   }
 `;
@@ -193,6 +140,7 @@ export const onUpdateEmployee = /* GraphQL */ `
       newHire
       createdAt
       updatedAt
+      __typename
     }
   }
 `;
@@ -208,6 +156,7 @@ export const onDeleteEmployee = /* GraphQL */ `
       newHire
       createdAt
       updatedAt
+      __typename
     }
   }
 `;
@@ -216,21 +165,12 @@ export const onCreateWarehouse = /* GraphQL */ `
     onCreateWarehouse {
       id
       employees {
-        items {
-          id
-          name
-          startDate
-          phoneNumber
-          warehouseID
-          jobTitle
-          newHire
-          createdAt
-          updatedAt
-        }
         nextToken
+        __typename
       }
       createdAt
       updatedAt
+      __typename
     }
   }
 `;
@@ -239,21 +179,12 @@ export const onUpdateWarehouse = /* GraphQL */ `
     onUpdateWarehouse {
       id
       employees {
-        items {
-          id
-          name
-          startDate
-          phoneNumber
-          warehouseID
-          jobTitle
-          newHire
-          createdAt
-          updatedAt
-        }
         nextToken
+        __typename
       }
       createdAt
       updatedAt
+      __typename
     }
   }
 `;
@@ -262,21 +193,12 @@ export const onDeleteWarehouse = /* GraphQL */ `
     onDeleteWarehouse {
       id
       employees {
-        items {
-          id
-          name
-          startDate
-          phoneNumber
-          warehouseID
-          jobTitle
-          newHire
-          createdAt
-          updatedAt
-        }
         nextToken
+        __typename
       }
       createdAt
       updatedAt
+      __typename
     }
   }
 `;
@@ -285,34 +207,18 @@ export const onCreateAccountRepresentative = /* GraphQL */ `
     onCreateAccountRepresentative {
       id
       customers {
-        items {
-          id
-          name
-          phoneNumber
-          accountRepresentativeID
-          createdAt
-          updatedAt
-        }
         nextToken
+        __typename
       }
       orders {
-        items {
-          id
-          customerID
-          accountRepresentativeID
-          productID
-          status
-          amount
-          date
-          createdAt
-          updatedAt
-        }
         nextToken
+        __typename
       }
       orderTotal
       salesPeriod
       createdAt
       updatedAt
+      __typename
     }
   }
 `;
@@ -321,34 +227,18 @@ export const onUpdateAccountRepresentative = /* GraphQL */ `
     onUpdateAccountRepresentative {
       id
       customers {
-        items {
-          id
-          name
-          phoneNumber
-          accountRepresentativeID
-          createdAt
-          updatedAt
-        }
         nextToken
+        __typename
       }
       orders {
-        items {
-          id
-          customerID
-          accountRepresentativeID
-          productID
-          status
-          amount
-          date
-          createdAt
-          updatedAt
-        }
         nextToken
+        __typename
       }
       orderTotal
       salesPeriod
       createdAt
       updatedAt
+      __typename
     }
   }
 `;
@@ -357,34 +247,18 @@ export const onDeleteAccountRepresentative = /* GraphQL */ `
     onDeleteAccountRepresentative {
       id
       customers {
-        items {
-          id
-          name
-          phoneNumber
-          accountRepresentativeID
-          createdAt
-          updatedAt
-        }
         nextToken
+        __typename
       }
       orders {
-        items {
-          id
-          customerID
-          accountRepresentativeID
-          productID
-          status
-          amount
-          date
-          createdAt
-          updatedAt
-        }
         nextToken
+        __typename
       }
       orderTotal
       salesPeriod
       createdAt
       updatedAt
+      __typename
     }
   }
 `;
@@ -394,21 +268,12 @@ export const onCreateProduct = /* GraphQL */ `
       id
       name
       orders {
-        items {
-          id
-          customerID
-          accountRepresentativeID
-          productID
-          status
-          amount
-          date
-          createdAt
-          updatedAt
-        }
         nextToken
+        __typename
       }
       createdAt
       updatedAt
+      __typename
     }
   }
 `;
@@ -418,21 +283,12 @@ export const onUpdateProduct = /* GraphQL */ `
       id
       name
       orders {
-        items {
-          id
-          customerID
-          accountRepresentativeID
-          productID
-          status
-          amount
-          date
-          createdAt
-          updatedAt
-        }
         nextToken
+        __typename
       }
       createdAt
       updatedAt
+      __typename
     }
   }
 `;
@@ -442,21 +298,12 @@ export const onDeleteProduct = /* GraphQL */ `
       id
       name
       orders {
-        items {
-          id
-          customerID
-          accountRepresentativeID
-          productID
-          status
-          amount
-          date
-          createdAt
-          updatedAt
-        }
         nextToken
+        __typename
       }
       createdAt
       updatedAt
+      __typename
     }
   }
 `;
@@ -470,14 +317,17 @@ export const onCreateUser = /* GraphQL */ `
         bucket
         region
         key
+        __typename
       }
       documents {
         bucket
         region
         key
+        __typename
       }
       createdAt
       updatedAt
+      __typename
     }
   }
 `;
@@ -491,14 +341,17 @@ export const onUpdateUser = /* GraphQL */ `
         bucket
         region
         key
+        __typename
       }
       documents {
         bucket
         region
         key
+        __typename
       }
       createdAt
       updatedAt
+      __typename
     }
   }
 `;
@@ -512,14 +365,17 @@ export const onDeleteUser = /* GraphQL */ `
         bucket
         region
         key
+        __typename
       }
       documents {
         bucket
         region
         key
+        __typename
       }
       createdAt
       updatedAt
+      __typename
     }
   }
 `;

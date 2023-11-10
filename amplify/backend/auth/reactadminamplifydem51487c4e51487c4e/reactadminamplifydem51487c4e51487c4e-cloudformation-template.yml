@@ -243,7 +243,7 @@ Resources:
               - ' }'
               - '};'
       Handler: index.handler
-      Runtime: nodejs12.x
+      Runtime: nodejs14.x
       Timeout: '300'
       Role:
         Fn::GetAtt:
@@ -379,3 +379,5 @@ Outputs:
       Fn::GetAtt:
         - UserPoolClientInputs
         - appSecret
+Description: >-
+  {"createdOn":"Mac","createdBy":"Amplify","createdWith":"12.8.2","stackType":"auth-Cognito","metadata":{}}

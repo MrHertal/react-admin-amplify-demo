@@ -1,41 +1,42 @@
 export type AmplifyDependentResourcesAttributes = {
-    "auth": {
-        "reactadminamplifydem51487c4e51487c4e": {
-            "IdentityPoolId": "string",
-            "IdentityPoolName": "string",
-            "UserPoolId": "string",
-            "UserPoolName": "string",
-            "AppClientIDWeb": "string",
-            "AppClientID": "string",
-            "AppClientSecret": "string"
-        },
-        "userPoolGroups": {
-            "superadminGroupRole": "string",
-            "adminGroupRole": "string"
-        }
+  "api": {
+    "AdminQueries": {
+      "ApiName": "string",
+      "RootUrl": "string"
     },
-    "api": {
-        "reactadminamplifydem": {
-            "GraphQLAPIIdOutput": "string",
-            "GraphQLAPIEndpointOutput": "string"
-        },
-        "AdminQueries": {
-            "RootUrl": "string",
-            "ApiName": "string"
-        }
-    },
-    "storage": {
-        "s360f76f8b": {
-            "BucketName": "string",
-            "Region": "string"
-        }
-    },
-    "function": {
-        "AdminQueries6ffead5e": {
-            "Name": "string",
-            "Arn": "string",
-            "Region": "string",
-            "LambdaExecutionRole": "string"
-        }
+    "reactadminamplifydem": {
+      "GraphQLAPIEndpointOutput": "string",
+      "GraphQLAPIIdOutput": "string"
     }
+  },
+  "auth": {
+    "reactadminamplifydem51487c4e51487c4e": {
+      "AppClientID": "string",
+      "AppClientIDWeb": "string",
+      "AppClientSecret": "string",
+      "IdentityPoolId": "string",
+      "IdentityPoolName": "string",
+      "UserPoolId": "string",
+      "UserPoolName": "string"
+    },
+    "userPoolGroups": {
+      "adminGroupRole": "string",
+      "superadminGroupRole": "string"
+    }
+  },
+  "function": {
+    "AdminQueries6ffead5e": {
+      "Arn": "string",
+      "LambdaExecutionRole": "string",
+      "LambdaExecutionRoleArn": "string",
+      "Name": "string",
+      "Region": "string"
+    }
+  },
+  "storage": {
+    "s360f76f8b": {
+      "BucketName": "string",
+      "Region": "string"
+    }
+  }
 }

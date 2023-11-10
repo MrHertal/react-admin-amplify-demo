@@ -1,113 +1,131 @@
 {
-  "auth": {
-    "reactadminamplifydem51487c4e51487c4e": {
-      "service": "Cognito",
-      "providerPlugin": "awscloudformation",
-      "dependsOn": [],
-      "customAuth": false
-    },
-    "userPoolGroups": {
-      "service": "Cognito-UserPool-Groups",
-      "providerPlugin": "awscloudformation",
+  "api": {
+    "AdminQueries": {
       "dependsOn": [
         {
-          "category": "auth",
-          "resourceName": "reactadminamplifydem51487c4e51487c4e",
           "attributes": [
-            "UserPoolId",
-            "AppClientIDWeb",
-            "AppClientID",
-            "IdentityPoolId"
-          ]
+            "UserPoolId"
+          ],
+          "category": "auth",
+          "resourceName": "reactadminamplifydem51487c4e51487c4e"
+        },
+        {
+          "attributes": [
+            "Arn",
+            "Name"
+          ],
+          "category": "function",
+          "resourceName": "AdminQueries6ffead5e"
         }
-      ]
-    }
-  },
-  "api": {
-    "reactadminamplifydem": {
-      "service": "AppSync",
+      ],
       "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    },
+    "reactadminamplifydem": {
       "output": {
         "authConfig": {
+          "additionalAuthenticationProviders": [
+            {
+              "authenticationType": "AWS_IAM"
+            }
+          ],
           "defaultAuthentication": {
             "authenticationType": "AMAZON_COGNITO_USER_POOLS",
             "userPoolConfig": {
               "userPoolId": "authreactadminamplifydem51487c4e51487c4e"
             }
-          },
-          "additionalAuthenticationProviders": [
-            {
-              "authenticationType": "AWS_IAM"
-            }
-          ]
+          }
         }
-      }
-    },
-    "AdminQueries": {
-      "service": "API Gateway",
+      },
       "providerPlugin": "awscloudformation",
+      "service": "AppSync"
+    }
+  },
+  "auth": {
+    "reactadminamplifydem51487c4e51487c4e": {
+      "customAuth": false,
+      "dependsOn": [],
+      "providerPlugin": "awscloudformation",
+      "service": "Cognito"
+    },
+    "userPoolGroups": {
       "dependsOn": [
         {
+          "attributes": [
+            "UserPoolId",
+            "AppClientIDWeb",
+            "AppClientID",
+            "IdentityPoolId"
+          ],
           "category": "auth",
-          "resourceName": "reactadminamplifydem51487c4e51487c4e",
+          "resourceName": "reactadminamplifydem51487c4e51487c4e"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Cognito-UserPool-Groups"
+    }
+  },
+  "function": {
+    "AdminQueries6ffead5e": {
+      "build": true,
+      "dependsOn": [
+        {
           "attributes": [
             "UserPoolId"
-          ]
-        },
+          ],
+          "category": "auth",
+          "resourceName": "reactadminamplifydem51487c4e51487c4e"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_function_AdminQueries6ffead5e_deploymentBucketName": {
+      "usedBy": [
         {
           "category": "function",
-          "resourceName": "AdminQueries6ffead5e",
-          "attributes": [
-            "Arn",
-            "Name"
-          ]
+          "resourceName": "AdminQueries6ffead5e"
+        }
+      ]
+    },
+    "AMPLIFY_function_AdminQueries6ffead5e_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "AdminQueries6ffead5e"
         }
       ]
     }
   },
   "storage": {
     "s360f76f8b": {
-      "service": "S3",
-      "providerPlugin": "awscloudformation",
       "dependsOn": [
         {
-          "category": "auth",
-          "resourceName": "reactadminamplifydem51487c4e51487c4e",
           "attributes": [
             "UserPoolId"
-          ]
+          ],
+          "category": "auth",
+          "resourceName": "reactadminamplifydem51487c4e51487c4e"
         },
         {
-          "category": "auth",
-          "resourceName": "userPoolGroups",
           "attributes": [
             "superadminGroupRole"
-          ]
+          ],
+          "category": "auth",
+          "resourceName": "userPoolGroups"
         },
         {
-          "category": "auth",
-          "resourceName": "userPoolGroups",
           "attributes": [
             "adminGroupRole"
-          ]
-        }
-      ]
-    }
-  },
-  "function": {
-    "AdminQueries6ffead5e": {
-      "service": "Lambda",
-      "providerPlugin": "awscloudformation",
-      "build": true,
-      "dependsOn": [
-        {
+          ],
           "category": "auth",
-          "resourceName": "reactadminamplifydem51487c4e51487c4e",
-          "attributes": [
-            "UserPoolId"
-          ]
+          "resourceName": "userPoolGroups"
         }
-      ]
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "S3"
     }
   }
 }

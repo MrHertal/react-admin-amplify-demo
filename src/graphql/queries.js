@@ -13,6 +13,7 @@ export const getOrder = /* GraphQL */ `
       date
       createdAt
       updatedAt
+      __typename
     }
   }
 `;
@@ -33,8 +34,10 @@ export const listOrders = /* GraphQL */ `
         date
         createdAt
         updatedAt
+        __typename
       }
       nextToken
+      __typename
     }
   }
 `;
@@ -46,35 +49,16 @@ export const getCustomer = /* GraphQL */ `
       phoneNumber
       accountRepresentativeID
       ordersByDate {
-        items {
-          id
-          customerID
-          accountRepresentativeID
-          productID
-          status
-          amount
-          date
-          createdAt
-          updatedAt
-        }
         nextToken
+        __typename
       }
       ordersByStatusDate {
-        items {
-          id
-          customerID
-          accountRepresentativeID
-          productID
-          status
-          amount
-          date
-          createdAt
-          updatedAt
-        }
         nextToken
+        __typename
       }
       createdAt
       updatedAt
+      __typename
     }
   }
 `;
@@ -90,16 +74,12 @@ export const listCustomers = /* GraphQL */ `
         name
         phoneNumber
         accountRepresentativeID
-        ordersByDate {
-          nextToken
-        }
-        ordersByStatusDate {
-          nextToken
-        }
         createdAt
         updatedAt
+        __typename
       }
       nextToken
+      __typename
     }
   }
 `;
@@ -115,6 +95,7 @@ export const getEmployee = /* GraphQL */ `
       newHire
       createdAt
       updatedAt
+      __typename
     }
   }
 `;
@@ -135,8 +116,10 @@ export const listEmployees = /* GraphQL */ `
         newHire
         createdAt
         updatedAt
+        __typename
       }
       nextToken
+      __typename
     }
   }
 `;
@@ -145,21 +128,12 @@ export const getWarehouse = /* GraphQL */ `
     getWarehouse(id: $id) {
       id
       employees {
-        items {
-          id
-          name
-          startDate
-          phoneNumber
-          warehouseID
-          jobTitle
-          newHire
-          createdAt
-          updatedAt
-        }
         nextToken
+        __typename
       }
       createdAt
       updatedAt
+      __typename
     }
   }
 `;
@@ -172,17 +146,12 @@ export const listWarehouses = /* GraphQL */ `
     listWarehouses(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        employees(limit: 10) {
-          items {
-            id
-            name
-          }
-          nextToken
-        }
         createdAt
         updatedAt
+        __typename
       }
       nextToken
+      __typename
     }
   }
 `;
@@ -191,34 +160,18 @@ export const getAccountRepresentative = /* GraphQL */ `
     getAccountRepresentative(id: $id) {
       id
       customers {
-        items {
-          id
-          name
-          phoneNumber
-          accountRepresentativeID
-          createdAt
-          updatedAt
-        }
         nextToken
+        __typename
       }
       orders {
-        items {
-          id
-          customerID
-          accountRepresentativeID
-          productID
-          status
-          amount
-          date
-          createdAt
-          updatedAt
-        }
         nextToken
+        __typename
       }
       orderTotal
       salesPeriod
       createdAt
       updatedAt
+      __typename
     }
   }
 `;
@@ -235,18 +188,14 @@ export const listAccountRepresentatives = /* GraphQL */ `
     ) {
       items {
         id
-        customers {
-          nextToken
-        }
-        orders {
-          nextToken
-        }
         orderTotal
         salesPeriod
         createdAt
         updatedAt
+        __typename
       }
       nextToken
+      __typename
     }
   }
 `;
@@ -256,21 +205,12 @@ export const getProduct = /* GraphQL */ `
       id
       name
       orders {
-        items {
-          id
-          customerID
-          accountRepresentativeID
-          productID
-          status
-          amount
-          date
-          createdAt
-          updatedAt
-        }
         nextToken
+        __typename
       }
       createdAt
       updatedAt
+      __typename
     }
   }
 `;
@@ -284,13 +224,12 @@ export const listProducts = /* GraphQL */ `
       items {
         id
         name
-        orders {
-          nextToken
-        }
         createdAt
         updatedAt
+        __typename
       }
       nextToken
+      __typename
     }
   }
 `;
@@ -321,8 +260,10 @@ export const ordersByCustomerByStatusByDate = /* GraphQL */ `
         date
         createdAt
         updatedAt
+        __typename
       }
       nextToken
+      __typename
     }
   }
 `;
@@ -353,8 +294,10 @@ export const ordersByCustomerByDate = /* GraphQL */ `
         date
         createdAt
         updatedAt
+        __typename
       }
       nextToken
+      __typename
     }
   }
 `;
@@ -385,8 +328,10 @@ export const ordersByRepresentativeByDate = /* GraphQL */ `
         date
         createdAt
         updatedAt
+        __typename
       }
       nextToken
+      __typename
     }
   }
 `;
@@ -417,8 +362,10 @@ export const ordersByProduct = /* GraphQL */ `
         date
         createdAt
         updatedAt
+        __typename
       }
       nextToken
+      __typename
     }
   }
 `;
@@ -444,16 +391,12 @@ export const customersByRepresentative = /* GraphQL */ `
         name
         phoneNumber
         accountRepresentativeID
-        ordersByDate {
-          nextToken
-        }
-        ordersByStatusDate {
-          nextToken
-        }
         createdAt
         updatedAt
+        __typename
       }
       nextToken
+      __typename
     }
   }
 `;
@@ -484,8 +427,10 @@ export const employeesNewHire = /* GraphQL */ `
         newHire
         createdAt
         updatedAt
+        __typename
       }
       nextToken
+      __typename
     }
   }
 `;
@@ -516,8 +461,10 @@ export const employeesNewHireByStartDate = /* GraphQL */ `
         newHire
         createdAt
         updatedAt
+        __typename
       }
       nextToken
+      __typename
     }
   }
 `;
@@ -548,8 +495,10 @@ export const employeesByName = /* GraphQL */ `
         newHire
         createdAt
         updatedAt
+        __typename
       }
       nextToken
+      __typename
     }
   }
 `;
@@ -580,8 +529,10 @@ export const employeesByJobTitle = /* GraphQL */ `
         newHire
         createdAt
         updatedAt
+        __typename
       }
       nextToken
+      __typename
     }
   }
 `;
@@ -612,8 +563,10 @@ export const employeesByWarehouse = /* GraphQL */ `
         newHire
         createdAt
         updatedAt
+        __typename
       }
       nextToken
+      __typename
     }
   }
 `;
@@ -636,18 +589,14 @@ export const repsByPeriodAndTotal = /* GraphQL */ `
     ) {
       items {
         id
-        customers {
-          nextToken
-        }
-        orders {
-          nextToken
-        }
         orderTotal
         salesPeriod
         createdAt
         updatedAt
+        __typename
       }
       nextToken
+      __typename
     }
   }
 `;
@@ -671,13 +620,12 @@ export const productsByName = /* GraphQL */ `
       items {
         id
         name
-        orders {
-          nextToken
-        }
         createdAt
         updatedAt
+        __typename
       }
       nextToken
+      __typename
     }
   }
 `;
@@ -691,14 +639,17 @@ export const getUser = /* GraphQL */ `
         bucket
         region
         key
+        __typename
       }
       documents {
         bucket
         region
         key
+        __typename
       }
       createdAt
       updatedAt
+      __typename
     }
   }
 `;
@@ -713,20 +664,12 @@ export const listUsers = /* GraphQL */ `
         id
         username
         password
-        picture {
-          bucket
-          region
-          key
-        }
-        documents {
-          bucket
-          region
-          key
-        }
         createdAt
         updatedAt
+        __typename
       }
       nextToken
+      __typename
     }
   }
 `;
